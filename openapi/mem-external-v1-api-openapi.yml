@@ -1,0 +1,555 @@
+openapi: 3.1.0
+info:
+  description: The external developer API exposed through api.mem.ai. This compatibility projection remains independent from first-party product routes.
+  title: Mem Public Client CoreApi__service-info external-v1 API
+  version: 1.0.0
+servers:
+- url: https://api.mem.ai
+security:
+- bearerAuth: []
+tags:
+- name: external-v1
+paths:
+  /v1/mem-it:
+    post:
+      operationId: app_src_api_routes_external_v1_mem_it_views_mem_it
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LegacyMemItRequestSchema'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LegacyMemItResponseSchema'
+          description: OK
+      summary: Mem It
+      tags:
+      - external-v1
+      x-codeSamples:
+      - label: cURL
+        lang: bash
+        source: "curl \"https://api.mem.ai/v1/mem-it\" \\\n     --header \"Content-Type: application/json\" \\\n     --header \"Authorization: Bearer $MEM_API_KEY\" \\\n     --data '{\n         \"input\": \"<!DOCTYPE html><html><head><title>AI Trends 2025</title>...</html>\",\n         \"instructions\": \"Extract the key findings and save as a research note\",\n     }'"
+  /v1/notes:
+    post:
+      operationId: app_src_api_routes_external_v1_notes_views_create_note
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LegacyCreateNoteRequestSchema'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LegacyCreateNoteResponseSchema'
+          description: OK
+      summary: Create Note
+      tags:
+      - external-v1
+      x-codeSamples:
+      - label: cURL
+        lang: bash
+        source: "                    curl \"https://api.mem.ai/v1/notes\" \\\n                         --header \"Content-Type: application/json\" \\\n                         --header \"Authorization: Bearer $MEM_API_KEY\" \\\n                         --data '{\n                             \"content\": \"# Sales Call with Acme Corp\n\nContact: John Smith (john@acme.com)\n\nInterested in enterprise plan. Follow up next week.\",\n                             \"auto_organize\": \"Add this to both my Sales and Follow-ups collections\",\n                             \"auto_format\": \"Format as a sales call summary with clear follow-up tasks\"\n                         }'\n                    "
+  /v1/notes/{note_id}:
+    delete:
+      operationId: app_src_api_routes_external_v1_notes_views_delete_note
+      parameters:
+      - in: path
+        name: note_id
+        required: true
+        schema:
+          format: uuid
+          title: Note Id
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LegacyDeleteNoteResponseSchema'
+          description: OK
+      summary: Delete Note
+      tags:
+      - external-v1
+      x-codeSamples:
+      - label: cURL
+        lang: bash
+        source: "curl \"https://api.mem.ai/v1/notes/01961d40-7a67-7049-a8a6-d5638cbaaeb9\" \\\n     --header \"Content-Type: application/json\" \\\n     --header \"Authorization: Bearer $MEM_API_KEY\" \\\n     --request DELETE"
+components:
+  schemas:
+    LegacyMemItResponseSchema:
+      example:
+        operations:
+        - note_id: 01234567-89ab-cdef-0123-456789abcdef
+          title: AI Trends 2025 - Key Findings
+          type: created-note
+          url: https://app.mem.ai/m/01234567-89ab-cdef-0123-456789abcdef
+        request_id: api-request-036ed6c7-de00-459f-a89b-43d26aafe522
+        status: completed
+      properties:
+        operations:
+          items:
+            anyOf:
+            - $ref: '#/components/schemas/CreatedNoteSessionOperationSchema'
+            - $ref: '#/components/schemas/CreatedCollectionSessionOperationSchema'
+            - $ref: '#/components/schemas/AddedNoteToCollectionSessionOperationSchema'
+            - $ref: '#/components/schemas/DeletedNoteSessionOperationSchema'
+          title: Operations
+          type: array
+        request_id:
+          title: Request Id
+          type: string
+        status:
+          $ref: '#/components/schemas/LegacyApiRequestProcessingStatusSchema'
+      required:
+      - request_id
+      - operations
+      - status
+      title: LegacyMemItResponseSchema
+      type: object
+    CreatedNoteSessionOperationSchema:
+      properties:
+        note_id:
+          format: uuid
+          title: Note Id
+          type: string
+        title:
+          title: Title
+          type: string
+        type:
+          const: created-note
+          default: created-note
+          title: Type
+          type: string
+        url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Url
+      required:
+      - note_id
+      - title
+      title: CreatedNoteOperation
+      type: object
+    LegacyMemItRequestSchema:
+      properties:
+        context:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: 'Additional background information that helps Mem understand how this input relates to your existing knowledge.
+
+
+            Examples:
+
+            • "This is related to my Project Alpha research"
+
+            • "This is from the quarterly planning meeting"
+
+            • "This is a follow-up to our discussion yesterday"'
+          title: Context
+        input:
+          description: 'Any raw content you want to remember - web pages, emails, transcripts, articles, or simple text.
+
+
+            Common Use Cases:
+
+            • HTML from a webpage
+
+            • Email text (including headers)
+
+            • Meeting transcript
+
+            • Text from a document
+
+            • Simple notes or thoughts
+
+
+            Examples:
+
+            • "<!DOCTYPE html><html><head><title>AI Trends 2025</title>...</html>"
+
+            • "[08:47:19] Kevin: Hello...[09:15:22] Meeting ended."
+
+            • "Check out Atomic Habits by James Clear - recommended by Sarah"'
+          title: Input
+          type: string
+        instructions:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: 'Optional guidance on how you want this information processed or remembered.
+
+
+            Examples:
+
+            • "Extract the key findings and save as a research note"
+
+            • "Create a summary with action items and decisions"
+
+            • "Add to my reading list"'
+          title: Instructions
+        timestamp:
+          anyOf:
+          - format: date-time
+            type: string
+          - type: 'null'
+          description: 'When this information was encountered or created (ISO 8601 datetime string). Defaults to the current date and time.
+
+
+            Example:
+
+            • "2025-04-01T14:30:45Z"
+
+            • "2023-12-15T09:45:30+01:00"'
+          title: Timestamp
+      required:
+      - input
+      title: LegacyMemItRequestSchema
+      type: object
+    DeletedNoteSessionOperationSchema:
+      properties:
+        note_id:
+          format: uuid
+          title: Note Id
+          type: string
+        type:
+          const: deleted-note
+          default: deleted-note
+          title: Type
+          type: string
+      required:
+      - note_id
+      title: DeletedNoteOperation
+      type: object
+    LegacyApiRequestProcessingStatusSchema:
+      enum:
+      - completed
+      - failed
+      - unknown
+      title: LegacyApiRequestProcessingStatusSchema
+      type: string
+    LegacyCreateNoteRequestSchema:
+      properties:
+        add_to_collections:
+          anyOf:
+          - items:
+              anyOf:
+              - type: string
+              - format: uuid
+                type: string
+            type: array
+          - type: 'null'
+          description: 'Array of strings representing collection titles or IDs to add the note to. If a collection doesn''t exist, a new one will be created.
+
+
+            Examples:
+
+            • ["Meetings", "Product", "Q2 Planning"]
+
+            • ["8a7b6c5d-4e3f-2a1b-0c9d-8e7f6a5b4c3d", "Marketing"]'
+          title: Add To Collections
+        apply_template:
+          anyOf:
+          - type: string
+          - format: uuid
+            type: string
+          - type: 'null'
+          description: String representing a template title or ID to apply to the note content.
+          examples:
+          - Meeting Notes
+          - 8a7b6c5d-4e3f-2a1b-0c9d-8e7f6a5b4c3d
+          title: Apply Template
+        auto_format:
+          anyOf:
+          - type: boolean
+          - type: string
+          - type: 'null'
+          description: 'Boolean or string that controls automatic formatting. If true, Mem will automatically format the note content. If a string is provided, it will be used as custom formatting instructions.
+
+
+            Examples:
+
+            • True
+
+            • "Use bullet points throughout and highlight key action items"'
+          title: Auto Format
+        auto_organize:
+          anyOf:
+          - type: boolean
+          - type: string
+          - type: 'null'
+          description: 'Boolean or string that controls automatic organization. If true, Mem will automatically organize the note into relevant collections. If a string is provided, it will be used as custom organization instructions.
+
+
+            Examples:
+
+            • True
+
+            • "Add this note to exactly one of my Marketing, Sales, or Recruiting collections"'
+          title: Auto Organize
+        content:
+          description: Markdown formatted string representing the note content. The first line is automatically interpreted as the title.
+          examples:
+          - '# Meeting with Product Team
+
+
+            Discussion Topics:
+
+            - Roadmap updates
+
+            - Feature prioritization
+
+
+            Action Items:
+
+            - Schedule follow-up with design
+
+            - Share Q2 priorities document'
+          title: Content
+          type: string
+        created_at:
+          anyOf:
+          - format: date-time
+            type: string
+          - type: 'null'
+          description: 'When this note was created (ISO 8601 datetime string). Defaults to the current date and time.
+
+
+            Example:
+
+            • "2025-04-01T14:30:45Z"
+
+            • "2023-12-15T09:45:30+01:00"'
+          title: Created At
+        id:
+          anyOf:
+          - format: uuid
+            type: string
+          - type: 'null'
+          description: 'Optional UUID for the note. If provided, Mem will create a new note with the given ID.
+
+
+            Examples:
+
+            • "123e4567-e89b-12d3-a456-426614174000"'
+          title: Id
+        updated_at:
+          anyOf:
+          - format: date-time
+            type: string
+          - type: 'null'
+          description: 'When this note was last updated (ISO 8601 datetime string). Defaults to the same as created_at.
+
+
+            Examples:
+
+            • "2025-04-02T09:15:22Z"
+
+            • "2023-12-15T09:45:30+01:00"'
+          title: Updated At
+      required:
+      - content
+      title: LegacyCreateNoteRequestSchema
+      type: object
+    AddedNoteToCollectionSessionOperationSchema:
+      properties:
+        collection_id:
+          format: uuid
+          title: Collection Id
+          type: string
+        collection_title:
+          title: Collection Title
+          type: string
+        collection_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Collection Url
+        note_id:
+          format: uuid
+          title: Note Id
+          type: string
+        note_title:
+          title: Note Title
+          type: string
+        note_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Note Url
+        type:
+          const: added-note-to-collection
+          default: added-note-to-collection
+          title: Type
+          type: string
+      required:
+      - note_id
+      - note_title
+      - collection_id
+      - collection_title
+      title: AddedNoteToCollectionOperation
+      type: object
+    CreatedCollectionSessionOperationSchema:
+      properties:
+        collection_id:
+          format: uuid
+          title: Collection Id
+          type: string
+        title:
+          title: Title
+          type: string
+        type:
+          const: created-collection
+          default: created-collection
+          title: Type
+          type: string
+        url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Url
+      required:
+      - collection_id
+      - title
+      title: CreatedCollectionOperation
+      type: object
+    LegacyDeleteNoteResponseSchema:
+      example:
+        operations:
+        - note_id: 5e29c8a2-c73b-476b-9311-e2579712d4b1
+          type: deleted-note
+        request_id: api-request-036ed6c7-de00-459f-a89b-43d26aafe522
+        status: completed
+      properties:
+        operations:
+          items:
+            anyOf:
+            - $ref: '#/components/schemas/CreatedNoteSessionOperationSchema'
+            - $ref: '#/components/schemas/CreatedCollectionSessionOperationSchema'
+            - $ref: '#/components/schemas/AddedNoteToCollectionSessionOperationSchema'
+            - $ref: '#/components/schemas/DeletedNoteSessionOperationSchema'
+          title: Operations
+          type: array
+        request_id:
+          title: Request Id
+          type: string
+        status:
+          $ref: '#/components/schemas/LegacyApiRequestProcessingStatusSchema'
+      required:
+      - request_id
+      - operations
+      - status
+      title: LegacyDeleteNoteResponseSchema
+      type: object
+    LegacyCreateNoteResponseSchema:
+      example:
+        content: '# Sales Call with Acme Corp
+
+
+          Contact: John Smith (john@acme.com)
+
+
+          Interested in enterprise plan. Follow up next week.
+
+
+          ## Action Items
+
+          - Schedule follow-up call next week
+
+          - Send enterprise pricing information
+
+
+          ## Key Points
+
+          - Interested in enterprise plan
+
+          - Contact: John Smith (john@acme.com)'
+        created_at: '2025-04-11T04:47:14.457Z'
+        id: 5e29c8a2-c73b-476b-9311-e2579712d4b1
+        operations:
+        - collection_id: 3e4f5a6b-7c8d-9e0f-1a2b-3c4d5e6f7a8b
+          collection_title: Acme Corp
+          collection_url: https://mem.ai/collections/3e4f5a6b-7c8d-9e0f-1a2b-3c4d5e6f7a8b
+          type: created-collection
+        - collection_id: 3e4f5a6b-7c8d-9e0f-1a2b-3c4d5e6f7a8b
+          collection_title: Acme Corp
+          collection_url: https://mem.ai/collections/3e4f5a6b-7c8d-9e0f-1a2b-3c4d5e6f7a8b
+          note_id: 5e29c8a2-c73b-476b-9311-e2579712d4b1
+          note_title: Sales Call with Acme Corp
+          note_url: https://mem.ai/notes/5e29c8a2-c73b-476b-9311-e2579712d4b1
+          type: added-note-to-collection
+        - '...'
+        request_id: api-request-036ed6c7-de00-459f-a89b-43d26aafe522
+        status: completed
+        title: Sales Call with Acme Corp
+        updated_at: '2025-04-11T04:47:19.702Z'
+        url: https://mem.ai/notes/5e29c8a2-c73b-476b-9311-e2579712d4b1
+      properties:
+        content:
+          title: Content
+          type: string
+        created_at:
+          format: date-time
+          title: Created At
+          type: string
+        id:
+          format: uuid
+          title: Id
+          type: string
+        operations:
+          items:
+            anyOf:
+            - $ref: '#/components/schemas/CreatedNoteSessionOperationSchema'
+            - $ref: '#/components/schemas/CreatedCollectionSessionOperationSchema'
+            - $ref: '#/components/schemas/AddedNoteToCollectionSessionOperationSchema'
+            - $ref: '#/components/schemas/DeletedNoteSessionOperationSchema'
+          title: Operations
+          type: array
+        request_id:
+          title: Request Id
+          type: string
+        status:
+          $ref: '#/components/schemas/LegacyApiRequestProcessingStatusSchema'
+        title:
+          title: Title
+          type: string
+        updated_at:
+          format: date-time
+          title: Updated At
+          type: string
+        url:
+          title: Url
+          type: string
+      required:
+      - request_id
+      - id
+      - url
+      - title
+      - created_at
+      - updated_at
+      - content
+      - operations
+      - status
+      title: LegacyCreateNoteResponseSchema
+      type: object
+  securitySchemes:
+    bearerAuth:
+      scheme: bearer
+      type: http
+    CoreApi__AssetAccessToken:
+      in: query
+      name: token
+      type: apiKey
+    CoreApi__Authorization:
+      in: header
+      name: Authorization
+      type: apiKey

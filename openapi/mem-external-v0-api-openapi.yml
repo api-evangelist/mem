@@ -1,0 +1,101 @@
+openapi: 3.1.0
+info:
+  description: The external developer API exposed through api.mem.ai. This compatibility projection remains independent from first-party product routes.
+  title: Mem Public Client CoreApi__service-info external-v0 API
+  version: 1.0.0
+servers:
+- url: https://api.mem.ai
+security:
+- bearerAuth: []
+tags:
+- name: external-v0
+paths:
+  /v0:
+    get:
+      operationId: app_src_api_routes_external_v0_views_root
+      parameters: []
+      responses:
+        '410':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeprecatedRouteResponseSchema'
+          description: Gone
+      summary: Root
+      tags:
+      - external-v0
+  /v0/mems:
+    post:
+      operationId: app_src_api_routes_external_v0_views_create_mem
+      parameters: []
+      responses:
+        '410':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeprecatedRouteResponseSchema'
+          description: Gone
+      summary: Create Mem
+      tags:
+      - external-v0
+  /v0/mems/{mem_id}/append:
+    post:
+      operationId: app_src_api_routes_external_v0_views_append_mem
+      parameters:
+      - in: path
+        name: mem_id
+        required: true
+        schema:
+          title: Mem Id
+          type: string
+      responses:
+        '410':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeprecatedRouteResponseSchema'
+          description: Gone
+      summary: Append Mem
+      tags:
+      - external-v0
+  /v0/mems/batch:
+    post:
+      operationId: app_src_api_routes_external_v0_views_batch_create_mems
+      parameters: []
+      responses:
+        '410':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeprecatedRouteResponseSchema'
+          description: Gone
+      summary: Batch Create Mems
+      tags:
+      - external-v0
+components:
+  schemas:
+    DeprecatedRouteResponseSchema:
+      properties:
+        error:
+          title: Error
+          type: string
+        message:
+          title: Message
+          type: string
+      required:
+      - error
+      - message
+      title: DeprecatedRouteResponseSchema
+      type: object
+  securitySchemes:
+    bearerAuth:
+      scheme: bearer
+      type: http
+    CoreApi__AssetAccessToken:
+      in: query
+      name: token
+      type: apiKey
+    CoreApi__Authorization:
+      in: header
+      name: Authorization
+      type: apiKey
