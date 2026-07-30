@@ -1,22 +1,221 @@
 aid: mem
 name: Mem
-description: Mem is a company surfaced as a portfolio company of a16z and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Mem is an AI-native note-taking and knowledge workspace that captures notes,
+  meetings, and ideas and keeps them instantly searchable and discoverable. It
+  pairs a Workspace (notes, collections, projects, calendar, meeting
+  transcription) with an Agent that tracks priorities and surfaces timely
+  reminders. Mem exposes a REST API (the Mem Public Client API at
+  https://api.mem.ai) for creating, reading, searching, and organizing notes and
+  collections, plus semantic search, attachments, audio recordings, calendar,
+  sessions, and tasks. It also ships an official hosted Model Context Protocol
+  (MCP) server so AI tools like Claude, ChatGPT, and CLI agents can work with a
+  user's Mem knowledge natively over OAuth. Mem is backed by a16z.
 url: https://raw.githubusercontent.com/api-evangelist/mem/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://storage.googleapis.com/mem-public-assets/sq-f.jpg
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - a16z
-x-tier: stub
-x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
-apis: []
+- Notes
+- Knowledge Management
+- Productivity
+- Artificial Intelligence
+- Note Taking
+- Search
+- MCP
+- Agents
+- Meetings
+apis:
+- aid: mem:mem-coreapi-service-info-api
+  name: Mem CoreApi__service-info API
+  description: The CoreApi__service-info API from Mem — 1 operation(s) for coreapi__service-info.
+  humanURL: https://docs.mem.ai
+  baseURL: https://api.mem.ai
+  tags:
+  - CoreApi__service-info
+  properties:
+  - type: OpenAPI
+    url: openapi/mem-coreapi-service-info-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mem.ai
+  - type: APIReference
+    url: https://docs.mem.ai/api-reference/overview/introduction
+  - type: Authentication
+    url: https://docs.mem.ai/api-reference/overview/authentication
+  - type: RateLimits
+    url: https://docs.mem.ai/api-reference/overview/rate-limits
+  - type: ChangeLog
+    url: https://docs.mem.ai/api-reference/overview/changelog
+- aid: mem:mem-external-api
+  name: Mem external API
+  description: The external API from Mem — 53 operation(s) for external.
+  humanURL: https://docs.mem.ai
+  baseURL: https://api.mem.ai
+  tags:
+  - external
+  properties:
+  - type: OpenAPI
+    url: openapi/mem-external-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mem.ai
+  - type: APIReference
+    url: https://docs.mem.ai/api-reference/overview/introduction
+  - type: Authentication
+    url: https://docs.mem.ai/api-reference/overview/authentication
+  - type: RateLimits
+    url: https://docs.mem.ai/api-reference/overview/rate-limits
+  - type: ChangeLog
+    url: https://docs.mem.ai/api-reference/overview/changelog
+- aid: mem:mem-external-v0-api
+  name: Mem external-v0 API
+  description: The external-v0 API from Mem — 4 operation(s) for external-v0.
+  humanURL: https://docs.mem.ai
+  baseURL: https://api.mem.ai
+  tags:
+  - external-v0
+  properties:
+  - type: OpenAPI
+    url: openapi/mem-external-v0-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mem.ai
+  - type: APIReference
+    url: https://docs.mem.ai/api-reference/overview/introduction
+  - type: Authentication
+    url: https://docs.mem.ai/api-reference/overview/authentication
+  - type: RateLimits
+    url: https://docs.mem.ai/api-reference/overview/rate-limits
+  - type: ChangeLog
+    url: https://docs.mem.ai/api-reference/overview/changelog
+- aid: mem:mem-external-v1-api
+  name: Mem external-v1 API
+  description: The external-v1 API from Mem — 3 operation(s) for external-v1.
+  humanURL: https://docs.mem.ai
+  baseURL: https://api.mem.ai
+  tags:
+  - external-v1
+  properties:
+  - type: OpenAPI
+    url: openapi/mem-external-v1-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mem.ai
+  - type: APIReference
+    url: https://docs.mem.ai/api-reference/overview/introduction
+  - type: Authentication
+    url: https://docs.mem.ai/api-reference/overview/authentication
+  - type: RateLimits
+    url: https://docs.mem.ai/api-reference/overview/rate-limits
+  - type: ChangeLog
+    url: https://docs.mem.ai/api-reference/overview/changelog
+- aid: mem:mem-external-v2-api
+  name: Mem external-v2 API
+  description: The external-v2 API from Mem — 44 operation(s) for external-v2.
+  humanURL: https://docs.mem.ai
+  baseURL: https://api.mem.ai
+  tags:
+  - external-v2
+  properties:
+  - type: OpenAPI
+    url: openapi/mem-external-v2-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mem.ai
+  - type: APIReference
+    url: https://docs.mem.ai/api-reference/overview/introduction
+  - type: Authentication
+    url: https://docs.mem.ai/api-reference/overview/authentication
+  - type: RateLimits
+    url: https://docs.mem.ai/api-reference/overview/rate-limits
+  - type: ChangeLog
+    url: https://docs.mem.ai/api-reference/overview/changelog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 23
+  pass: local-v1
+common:
+- type: DeveloperPortal
+  url: https://docs.mem.ai
+- type: Documentation
+  url: https://docs.mem.ai
+- type: APIReference
+  url: https://docs.mem.ai/api-reference/overview/introduction
+- type: GettingStarted
+  url: https://docs.mem.ai/guides/get-started/quickstart
+- type: Blog
+  url: https://get.mem.ai/blog
+- type: Support
+  url: https://help.mem.ai
+- type: Community
+  url: https://get.mem.ai/slack
+- type: GitHubOrganization
+  url: https://github.com/mem-ai
+- type: Pricing
+  url: https://mem.ai/pricing
+- type: SignUp
+  url: https://mem.ai/login
+- type: TermsOfService
+  url: https://mem.ai/pages/terms-of-service
+- type: PrivacyPolicy
+  url: https://mem.ai/pages/privacy
+- type: Security
+  url: https://mem.ai/pages/security
+- type: TrustCenter
+  url: https://trust.mem.ai/
+- type: OpenAPI
+  url: openapi/mem-openapi-original.json
+- type: MCPServer
+  url: mcp/mem-mcp.yml
+- type: LLMsTxt
+  url: llms/mem-llms.txt
+- type: WellKnown
+  url: well-known/mem-well-known.yml
+- type: Authentication
+  url: authentication/mem-authentication.yml
+- type: OAuthScopes
+  url: scopes/mem-scopes.yml
+- type: AgenticAccess
+  url: agentic-access/mem-agentic-access.yml
+- type: DomainSecurity
+  url: security/mem-domain-security.yml
+- type: Conventions
+  url: conventions/mem-conventions.yml
+- type: Idempotency
+  url: conventions/mem-conventions.yml
+- type: RateLimits
+  url: rate-limits/mem-rate-limits.yml
+- type: ChangeLog
+  url: changelog/mem-changelog.yml
+- type: Lifecycle
+  url: lifecycle/mem-lifecycle.yml
+- type: ErrorCatalog
+  url: errors/mem-problem-types.yml
+- type: Conformance
+  url: conformance/mem-conformance.yml
+- type: DataModel
+  url: data-model/mem-data-model.yml
+- type: Overlay
+  url: overlays/mem-openapi-overlay.yaml
+- type: AgentSkill
+  url: skills/_index.yml
