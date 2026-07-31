@@ -1,0 +1,24 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/mem-openapi-original.json + conventions/mem-conventions.yml
+skills:
+  - file: mem-capture-and-organize-note.md
+    name: Capture a note and file it into a collection
+    api: openapi/mem-openapi-original.json
+    operations:
+      - app_src_api_routes_external_v2_notes_views_create_note
+      - app_src_api_routes_external_v2_collections_views_create_collection
+      - app_src_api_routes_external_v2_collections_views_add_note_to_collection
+  - file: mem-search-and-retrieve.md
+    name: Search and retrieve notes with semantic + attachment context
+    api: openapi/mem-openapi-original.json
+    operations:
+      - app_src_api_routes_external_v2_notes_views_search_notes
+      - app_src_api_routes_external_v2_notes_views_extended_search_notes
+      - app_src_api_routes_external_v2_notes_views_find_related_notes
+      - app_src_api_routes_external_v2_notes_views_read_note
+  - file: mem-it-capture.md
+    name: Capture anything with Mem It (asynchronous intelligent save)
+    api: openapi/mem-openapi-original.json
+    operations:
+      - app_src_api_routes_external_v2_mem_it_views_mem_it

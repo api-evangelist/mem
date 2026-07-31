@@ -1,0 +1,39 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/mem-openapi-original.json
+docs: https://docs.mem.ai/api-reference/overview/authentication
+summary:
+  types:
+  - apiKey
+  - http
+  - oauth2
+  api_key_in:
+  - header
+  - query
+  oauth2_flows:
+  - authorizationCode
+  - clientCredentials
+  primary: >-
+    REST API requests authenticate with a personal bearer token
+    (Authorization: Bearer $MEM_API_KEY) created in Mem settings. OAuth 2.0 is
+    used for the hosted MCP server and third-party app connectors, advertised
+    via RFC 8414 / OIDC discovery on api.mem.ai (scopes content.read,
+    content.write, profile.read, profile.write). See scopes/mem-scopes.yml.
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  sources:
+  - openapi/mem-openapi-original.json
+- name: CoreApi__AssetAccessToken
+  type: apiKey
+  in: query
+  parameter: token
+  sources:
+  - openapi/mem-openapi-original.json
+- name: CoreApi__Authorization
+  type: apiKey
+  in: header
+  parameter: Authorization
+  sources:
+  - openapi/mem-openapi-original.json

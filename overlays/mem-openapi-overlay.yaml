@@ -1,0 +1,37 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Mem Public Client API
+  version: 1.0.0
+extends: openapi/mem-openapi-original.json
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: mem
+      x-apievangelist-enriched: '2026-07-20'
+      x-apievangelist-mcp-server: https://mcp.mem.ai/mcp
+      x-apievangelist-docs: https://docs.mem.ai
+      x-apievangelist-rate-limits: https://docs.mem.ai/api-reference/overview/rate-limits
+      x-apievangelist-error-envelope: 'error.type is the stable machine-readable value; custom JSON envelope (not RFC 9457).'
+      x-apievangelist-idempotency: 'Create-only caller-provided ids; duplicate id returns 409 Conflict.'
+  - target: $.components.securitySchemes
+    update:
+      OAuth2:
+        type: oauth2
+        description: >-
+          OAuth 2.0 (advertised via RFC 8414 / OIDC discovery on api.mem.ai) used
+          for the hosted MCP server and third-party app connectors. Scopes:
+          content.read, content.write, profile.read, profile.write.
+        flows:
+          authorizationCode:
+            authorizationUrl: https://mem.ai/oauth/consent
+            tokenUrl: https://api.mem.ai/api/v2/oauth2/token
+            scopes:
+              content.read: Read notes and collections
+              content.write: Create, update, and organize notes and collections
+              profile.read: Read the user's profile
+              profile.write: Write the user's profile
+          clientCredentials:
+            tokenUrl: https://api.mem.ai/api/v2/oauth2/token
+            scopes:
+              content.read: Read notes and collections
+              content.write: Create, update, and organize notes and collections

@@ -1,0 +1,41 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/mem-openapi-original.json + well-known/ + docs
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: RFC 8414 authorization-server metadata published at api.mem.ai/.well-known/oauth-authorization-server (authorizationCode + clientCredentials, PKCE S256).
+  - id: oidc
+    conforms: true
+    evidence: OpenID Connect discovery at api.mem.ai/.well-known/openid-configuration (id_token RS256, jwks_uri).
+  - id: rfc8414-oauth-as-metadata
+    conforms: true
+    evidence: well-known/mem-oauth-authorization-server.json
+  - id: rfc9728-oauth-protected-resource
+    conforms: true
+    evidence: mcp.mem.ai/.well-known/oauth-protected-resource declares resource + authorization_servers + scopes.
+  - id: oauth-pkce
+    conforms: true
+    evidence: code_challenge_methods_supported includes S256.
+  - id: oauth-dynamic-client-registration
+    conforms: true
+    evidence: registration_endpoint https://api.mem.ai/oauth2/register advertised in discovery metadata.
+  - id: mcp
+    conforms: true
+    evidence: Official hosted MCP server at https://mcp.mem.ai/mcp (Model Context Protocol) with OAuth-protected resource.
+  - id: http-conditional-requests
+    conforms: true
+    evidence: If-None-Match request parameter and 304 Not Modified responses in OpenAPI.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: "Errors use a custom { error: { type, message, details } } envelope, not application/problem+json."
+  - id: fhir
+    conforms: false
+  - id: scim
+    conforms: false
+  - id: odata
+    conforms: false
+  - id: fapi
+    conforms: false
+  - id: psd2
+    conforms: false

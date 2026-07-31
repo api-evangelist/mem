@@ -1,0 +1,40 @@
+generated: '2026-07-20'
+method: searched
+source: https://api.mem.ai/.well-known/oauth-authorization-server
+docs: https://docs.mem.ai/mcp/setup
+schemes:
+  - name: OAuth2
+    source: https://api.mem.ai/.well-known/oauth-authorization-server
+    issuer: https://api.mem.ai
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://mem.ai/oauth/consent
+        tokenUrl: https://api.mem.ai/api/v2/oauth2/token
+        pkce: S256
+      - flow: clientCredentials
+        tokenUrl: https://api.mem.ai/api/v2/oauth2/token
+    registration_endpoint: https://api.mem.ai/oauth2/register
+    dynamic_client_registration: true
+scopes:
+  - scope: content.read
+    description: Read access to the user's Mem notes and collections.
+    flows: [authorizationCode, clientCredentials]
+    sources: [well-known/mem-oauth-authorization-server.json, well-known/mem-oauth-protected-resource.json]
+  - scope: content.write
+    description: Create, update, and organize the user's Mem notes and collections.
+    flows: [authorizationCode, clientCredentials]
+    sources: [well-known/mem-oauth-authorization-server.json, well-known/mem-oauth-protected-resource.json]
+  - scope: profile.read
+    description: Read access to the user's Mem profile.
+    flows: [authorizationCode]
+    sources: [well-known/mem-openid-configuration.json]
+  - scope: profile.write
+    description: Write access to the user's Mem profile.
+    flows: [authorizationCode]
+    sources: [well-known/mem-openid-configuration.json]
+notes: >-
+  Scopes are advertised via OAuth 2.0 Authorization Server Metadata (RFC 8414)
+  and OIDC discovery on api.mem.ai. The hosted MCP server (mcp.mem.ai) scopes
+  its protected resource to content.read + content.write. The REST API's own
+  OpenAPI securitySchemes declare bearer-token (API key) auth; OAuth 2.0 is the
+  mechanism used for the MCP server and third-party app connectors.

@@ -1,0 +1,84 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.mem.ai/api-reference/overview/
+authentication:
+  style: bearer-token
+  header: 'Authorization: Bearer $MEM_API_KEY'
+  also: OAuth 2.0 (authorization_code + client_credentials) for MCP + app connectors
+  docs: https://docs.mem.ai/api-reference/overview/authentication
+  see: authentication/mem-authentication.yml
+idempotency:
+  supported: true
+  mechanism: caller-provided-resource-id
+  detail: >-
+    Create endpoints (POST /v2/notes, POST /v2/collections) accept an optional
+    caller-provided `id`. These IDs are create-only: a duplicate `id` (including
+    a trashed resource) returns 409 Conflict instead of upserting, so a retried
+    create with the same client-supplied id is safe and will not duplicate the
+    resource. There is no separate Idempotency-Key header.
+  conflict_status: 409
+  docs: https://docs.mem.ai/api-reference/overview/changelog
+concurrency:
+  mechanism: optimistic
+  detail: >-
+    PATCH /v2/notes/{note_id} requires the exact current note `version`; read
+    the note first (or use the most recent write response) and pass that
+    `version`. A stale version is rejected.
+conditional_requests:
+  supported: true
+  request_header: If-None-Match
+  not_modified_status: 304
+pagination:
+  styles:
+    - style: cursor
+      applies_to: list endpoints (GET /v2/notes, GET /v2/collections, ...)
+      params: [limit, order_by]
+      response_field: next_page
+    - style: offset
+      applies_to: search endpoints (POST /v2/notes/search, ...)
+      params: [limit, offset, page]
+  detail: >-
+    List endpoints use deterministic cursor pagination ordered by order_by and
+    return next_page when more rows exist. Search endpoints return a bounded,
+    relevance-ranked snapshot with deterministic offset pagination.
+filtering:
+  detail: >-
+    List/search notes support filter_by_contains_* flags (tasks, images, files,
+    open_tasks) combined with OR semantics, plus created/updated date-range
+    filters (filter_by_created_after/before, filter_by_updated_after/before).
+versioning:
+  scheme: uri-path
+  versions: [v0, v1, v2]
+  current: v2
+  detail: >-
+    v0 and v1 are legacy "mem"/notes endpoints; v2 is the current series
+    (asynchronous Mem It, note reading, collections, semantic search).
+  see: lifecycle/mem-lifecycle.yml
+error_envelope:
+  format: custom-json
+  shape: '{ "error": { "type": <machine-readable>, "message": <human>, "details": {...} } }'
+  machine_field: error.type
+  detail: >-
+    error.type is the stable machine-readable value; message is for humans and
+    may change. Quota errors use error.type "quota_exceeded" with
+    details.reset_time.
+  see: errors/mem-problem-types.yml
+rate_limit_signaling:
+  algorithm: leaky-bucket
+  request_limits: {per_minute: 100, per_day: 4000}
+  complexity_limits: {per_minute: 200, per_day: 8000}
+  headers:
+    - X-RateLimit-Bucket
+    - X-RateLimit-Limit
+    - X-RateLimit-Remaining
+    - X-RateLimit-Reset
+    - X-Complexity-Bucket
+    - X-Complexity-Limit
+    - X-Complexity-Remaining
+    - X-Complexity-Reset
+    - Retry-After
+  exceeded_status: 429
+  docs: https://docs.mem.ai/api-reference/overview/rate-limits
+content_format:
+  detail: Note content is markdown; the first line of content becomes the note title.
+  docs: https://docs.mem.ai/guides/reference/content-format

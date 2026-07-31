@@ -1,0 +1,74 @@
+generated: '2026-07-20'
+method: searched
+status: published
+source: https://docs.mem.ai/mcp/overview
+server:
+  name: Mem MCP
+  transport: http
+  url: https://mcp.mem.ai/mcp
+  auth:
+    type: oauth2
+    protected_resource: https://mcp.mem.ai/.well-known/oauth-protected-resource
+    authorization_server: https://api.mem.ai
+    scopes: [content.read, content.write]
+    dynamic_client_registration: true
+  clients:
+    - Claude (web/desktop connectors)
+    - ChatGPT (app store connector)
+    - Claude Code CLI (claude mcp add --transport http mem https://mcp.mem.ai/mcp)
+    - Codex CLI (codex mcp add mem --url https://mcp.mem.ai/mcp)
+    - Gemini CLI (gemini mcp add -s user -t http mem https://mcp.mem.ai/mcp)
+description: >-
+  Mem ships an official hosted, remote MCP server that gives AI tools secure
+  OAuth-authenticated access to a user's Mem notes and collections. The docs
+  state it exposes 23 tools for reading, creating, searching, and organizing
+  notes and collections, backed by Mem's semantic search.
+tools_count: 23
+tools:
+  - name: create_note
+    description: Create a note with optional note ID and collection links; first line of content becomes the title.
+    source_operation: openapi/mem-openapi-original.json#app_src_api_routes_external_v2_notes_views_create_note
+  - name: get_note
+    description: Fetch the full current state of a single note by ID (includes trashed_at when trashed).
+    source_operation: openapi/mem-openapi-original.json#app_src_api_routes_external_v2_notes_views_read_note
+  - name: list_notes
+    description: List notes visible to the caller with cursor pagination.
+    source_operation: openapi/mem-openapi-original.json#app_src_api_routes_external_v2_notes_views_list_notes
+  - name: search_notes
+    description: Relevance-ranked note search from a free-text query with structured filters.
+    source_operation: openapi/mem-openapi-original.json#app_src_api_routes_external_v2_notes_views_search_notes
+  - name: extended_search_notes
+    description: Search notes and note-linked attachments together with attachment match context.
+    source_operation: openapi/mem-openapi-original.json#app_src_api_routes_external_v2_notes_views_extended_search_notes
+  - name: find_related_notes
+    description: Find notes semantically related to the current content of a note.
+    source_operation: openapi/mem-openapi-original.json#app_src_api_routes_external_v2_notes_views_find_related_notes
+  - name: update_note
+    description: Submit a complete markdown body plus the exact version being updated.
+    source_operation: openapi/mem-openapi-original.json#app_src_api_routes_external_v2_notes_views_update_note
+  - name: trash_note
+    description: Move a note to trash (recoverable removal).
+    source_operation: openapi/mem-openapi-original.json#app_src_api_routes_external_v2_notes_views_trash_note
+  - name: restore_note
+    description: Restore a previously trashed note.
+    source_operation: openapi/mem-openapi-original.json#app_src_api_routes_external_v2_notes_views_restore_note
+  - name: create_collection
+    description: Create a collection with optional caller-provided ID and timestamps.
+    source_operation: openapi/mem-openapi-original.json#app_src_api_routes_external_v2_collections_views_create_collection
+  - name: search_collections
+    description: Free-text relevance search across collections.
+    source_operation: openapi/mem-openapi-original.json#app_src_api_routes_external_v2_collections_views_search_collections
+  - name: add_note_to_collection
+    description: Add an existing note to an existing collection (membership link only).
+    source_operation: openapi/mem-openapi-original.json#app_src_api_routes_external_v2_collections_views_add_note_to_collection
+  - name: remove_note_from_collection
+    description: Remove a note from a collection while keeping both resources.
+    source_operation: openapi/mem-openapi-original.json#app_src_api_routes_external_v2_collections_views_remove_note_from_collection
+  - name: move_note
+    description: Move a note from one collection to another.
+    source_operation: openapi/mem-openapi-original.json#app_src_api_routes_external_v2_collections_views_move_note
+notes: >-
+  The tools[] list here is the documented note/collection surface; Mem states
+  the server exposes 23 tools total (also covering attachments and audio
+  recordings). Names mirror the docs' natural-language tool descriptions and are
+  cross-referenced to the underlying REST operationIds where they map directly.

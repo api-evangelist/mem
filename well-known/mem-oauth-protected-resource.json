@@ -1,0 +1,1 @@
+{"resource":"https://mcp.mem.ai/mcp","resource_name":"Mem API","authorization_servers":["https://api.mem.ai"],"bearer_methods_supported":["header"],"scopes_supported":["content.read","content.write"]}

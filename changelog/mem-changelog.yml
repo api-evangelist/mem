@@ -1,0 +1,70 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.mem.ai/api-reference/overview/changelog
+scheme: dated
+current_version: v2
+entries:
+  - date: planned
+    breaking: false
+    highlights:
+      - Request status tracking for "Mem It" operations
+      - Support for "apply a template" via the "Mem It" endpoint
+  - version: '2026-05-15'
+    date: '2026-05-15'
+    breaking: false
+    additions:
+      - PATCH /v2/notes/{note_id}/created-at to change a note's visible creation timestamp without changing content or quota accounting.
+  - version: '2026-05-09'
+    date: '2026-05-09'
+    breaking: false
+    additions:
+      - POST /v2/collections/{source_collection_id}/notes/{note_id}/move to move a note between collections.
+      - API reference pages for collection membership endpoints.
+  - version: '2026-04-08'
+    date: '2026-04-08'
+    breaking: true
+    highlights:
+      - PATCH /v2/notes/{note_id} now requires the exact current note version.
+  - version: '2026-04-06'
+    date: '2026-04-06'
+    breaking: true
+    highlights:
+      - POST /v2/collections caller-provided id values are create-only; duplicate IDs return 409 Conflict instead of upserting.
+      - PATCH /v2/collections/{collection_id} preserves caller-provided updated_at values.
+  - version: '2026-04-04'
+    date: '2026-04-04'
+    breaking: false
+    highlights:
+      - GET /v2/notes/{note_id} returns accessible trashed notes and includes trashed_at.
+  - version: '2026-04-01'
+    date: '2026-04-01'
+    breaking: true
+    highlights:
+      - POST /v2/notes caller-provided id values are create-only; duplicate IDs return 409 Conflict.
+  - version: '2026-03-25'
+    date: '2026-03-25'
+    breaking: false
+    additions:
+      - Date-range filters on GET /v2/notes and /v2/notes/search.
+      - Multiple filter_by_contains_* filters combined with OR semantics.
+  - version: '2025-12-09'
+    date: '2025-12-09'
+    breaking: false
+    additions:
+      - Complexity-based rate limiting for resource-intensive endpoints.
+      - Rate-limit headers (X-RateLimit-*, X-Complexity-*).
+  - version: '2025-10-31'
+    date: '2025-10-31'
+    breaking: false
+    additions:
+      - Listing and searching notes and collections.
+  - version: '2025-06-03'
+    date: '2025-06-03'
+    breaking: false
+    highlights:
+      - Release of the /v2 series; Mem It asynchronous by default; note reading; collections; leaky-bucket rate limiting.
+  - version: '2025-03-31'
+    date: '2025-03-31'
+    breaking: false
+    highlights:
+      - Initial community release of the /v1 API (Mem It, create/delete notes).

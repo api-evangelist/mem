@@ -1,0 +1,48 @@
+# Mem API
+
+## Docs
+
+- [Add Note to Collection](https://docs.mem.ai/api-reference/collections/add-note-to-collection.md): Add an existing note to an existing collection. This operation only creates the membership link and does not modify note or collection content. Use create endpoints to create notes or collections.
+- [Create Collection](https://docs.mem.ai/api-reference/collections/create-collection.md): Create a collection with optional caller-provided ID and timestamps. If `id` already exists, this request returns a conflict. Use collection membership endpoints to add, remove, or move notes between collections.
+- [Delete Collection](https://docs.mem.ai/api-reference/collections/delete-collection.md): Permanently delete a collection. Hard-deleting removes the collection resource itself. For membership-only changes, use note add, remove, or move collection endpoints.
+- [List Collections](https://docs.mem.ai/api-reference/collections/list-collections.md): List collections visible to the authenticated caller with cursor pagination. Results are ordered by `order_by` and return `next_page` when additional rows are available. For relevance-ranked retrieval by query, use `POST /v2/collections/search`.
+- [Move Note](https://docs.mem.ai/api-reference/collections/move-note.md): Move a note from one collection to another collection. This operation adds the note to the target collection, then removes it from the source collection. It does not modify note or collection content.
+- [Read Collection](https://docs.mem.ai/api-reference/collections/read-collection.md): Fetch metadata for a single collection by ID. This endpoint returns collection metadata only, not a note list for that collection. For discovery flows, use `GET /v2/collections` or `POST /v2/collections/search`.
+- [Remove Note from Collection](https://docs.mem.ai/api-reference/collections/remove-note-from-collection.md): Remove a note from a collection while keeping both resources. This operation only removes the membership link between IDs. Use note/collection deletion endpoints to remove resources.
+- [Search Collections](https://docs.mem.ai/api-reference/collections/search-collections.md): Search collections using free-text relevance matching. Returns a bounded relevance-ranked result set and does not return `next_page`. For deterministic chronological pagination, use `GET /v2/collections`.
+- [Update Collection](https://docs.mem.ai/api-reference/collections/update-collection.md): Update metadata for a collection by ID. Use this endpoint to rename a collection by setting `title`. This endpoint updates only provided fields (`title`, `description`) and leaves omitted fields unchanged. For read-only retrieval, use `GET /v2/collections/{collection_id}`.
+- [Mem It](https://docs.mem.ai/api-reference/mem-it/mem-it.md)
+- [Create Note](https://docs.mem.ai/api-reference/notes/create-note.md): Create a note with an optional note ID, timestamps, and collection links. If omitted, Mem generates the note ID. The first line of `content` becomes the note title.
+- [Delete Note](https://docs.mem.ai/api-reference/notes/delete-note.md): Permanently delete a note. Hard-deleted notes cannot be restored. For recoverable removal, use `POST /v2/notes/{note_id}/trash`.
+- [Find Related Notes](https://docs.mem.ai/api-reference/notes/find-related-notes.md): Find notes semantically related to the current persisted content of a note. The source note is embedded at request time, so newly created or recently updated notes can be used before asynchronous indexing catches up. Candidate related notes still come from the note search index.
+- [List Notes](https://docs.mem.ai/api-reference/notes/list-notes.md): List notes visible to the authenticated caller with cursor pagination. When multiple `contains_*` fields are true, a note may match any of them. Results are ordered by `order_by` and return `next_page` when additional rows are available. For relevance-ranked retrieval by query, use `POST /v2/notes/s…
+- [Read Note](https://docs.mem.ai/api-reference/notes/read-note.md): Fetch the full current state of a single note by ID. If the note is in trash, the response still returns the note and includes `trashed_at`. For discovery flows, use `GET /v2/notes` or `POST /v2/notes/search`.
+- [Search Notes](https://docs.mem.ai/api-reference/notes/search-notes.md): Search notes using a required free-text query and structured filters. When multiple `filter_by_contains_*` fields are true, a note may match any of them. Returns note results from a bounded search snapshot with deterministic offset pagination. Query-based searches are relevance-ranked within the bou…
+- [Set Note Created At](https://docs.mem.ai/api-reference/notes/set-note-created-at.md): Set a note's visible creation timestamp without changing its content. The supplied `created_at` must include a timezone offset and cannot be in the future. It can only backdate the note: the timestamp cannot be later than when the note was originally created. This operation changes note metadata onl…
+- [Update Note](https://docs.mem.ai/api-reference/notes/update-note.md): Submit a complete markdown body for a note and the exact `version` being updated. Send the full desired body in `content` (not a partial markdown patch). The first line of `content` becomes the updated title. Trashed notes must be restored before they can be updated.
+- [Authentication](https://docs.mem.ai/api-reference/overview/authentication.md)
+- [Changelog](https://docs.mem.ai/api-reference/overview/changelog.md)
+- [Error Handling](https://docs.mem.ai/api-reference/overview/error-handling.md)
+- [Introduction](https://docs.mem.ai/api-reference/overview/introduction.md)
+- [Rate Limits](https://docs.mem.ai/api-reference/overview/rate-limits.md)
+- [Welcome](https://docs.mem.ai/guides/get-started/overview.md)
+- [Quickstart](https://docs.mem.ai/guides/get-started/quickstart.md)
+- [Formatting Content](https://docs.mem.ai/guides/reference/content-format.md)
+- [Advanced Usage](https://docs.mem.ai/guides/use-cases/advanced-usage.md)
+- [Mem It](https://docs.mem.ai/guides/use-cases/mem-it.md): Remember anything, intelligently
+- [Mem Developer Docs](https://docs.mem.ai/index.md)
+- [Mem MCP](https://docs.mem.ai/mcp/overview.md): Connect your AI tools to Mem using the Model Context Protocol
+- [Security best practices](https://docs.mem.ai/mcp/security-best-practices.md): Securely connect AI tools to Mem with MCP
+- [Getting started](https://docs.mem.ai/mcp/setup.md): Connect your AI tools to Mem using MCP
+- [Supported tools](https://docs.mem.ai/mcp/supported-tools.md): All tools available through Mem's MCP server
+
+## OpenAPI Specs
+
+- [openapi](https://docs.mem.ai/api-reference/openapi.json)
+- [pnpm-lock](https://docs.mem.ai/pnpm-lock.yaml)
+- [package](https://docs.mem.ai/package.json)
+
+## Optional
+
+- [Community](https://get.mem.ai/slack)
+- [Blog](https://get.mem.ai/blog)

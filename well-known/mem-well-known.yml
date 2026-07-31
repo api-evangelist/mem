@@ -1,0 +1,34 @@
+generated: '2026-07-20'
+method: searched
+source: https://api.mem.ai/.well-known/ and https://mcp.mem.ai/.well-known/
+hosts:
+  - host: https://api.mem.ai
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 200
+        file: mem-openid-configuration.json
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        file: mem-oauth-authorization-server.json
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://mcp.mem.ai
+    documents:
+      - path: /.well-known/oauth-protected-resource
+        status: 200
+        file: mem-oauth-protected-resource.json
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        note: mirrors api.mem.ai issuer (scopes content.read, content.write)
+  - host: https://docs.mem.ai
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+notes: >-
+  Mem publishes OAuth 2.0 / OpenID Connect discovery documents (RFC 8414 + OIDC
+  discovery) on the API host, and an RFC 9728 OAuth protected-resource document
+  on the hosted MCP server. No security.txt or api-catalog is published.

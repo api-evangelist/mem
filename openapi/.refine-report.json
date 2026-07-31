@@ -1,0 +1,22 @@
+{
+  "provider": "mem",
+  "sources": [
+    "mem-coreapi-service-info-api-openapi.yml",
+    "mem-external-api-openapi.yml",
+    "mem-external-v0-api-openapi.yml",
+    "mem-external-v1-api-openapi.yml",
+    "mem-external-v2-api-openapi.yml"
+  ],
+  "outputs": [
+    "mem-coreapi-service-info-api-openapi.yml",
+    "mem-external-api-openapi.yml",
+    "mem-external-v0-api-openapi.yml",
+    "mem-external-v1-api-openapi.yml",
+    "mem-external-v2-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,105 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/mem-openapi-original.json
+notes: >-
+  Entity graph derived from the v2 OpenAPI paths, membership endpoints, and the
+  documented tool surface (notes link recording IDs and attachment IDs;
+  collections hold notes via membership links). Relationships reflect endpoint
+  shapes, not a published ERD.
+entities:
+  - name: Note
+    id_field: id
+    endpoints:
+      - "POST /v2/notes"
+      - "GET /v2/notes"
+      - "GET /v2/notes/{note_id}"
+      - "PATCH /v2/notes/{note_id}"
+      - "DELETE /v2/notes/{note_id}"
+    relationships:
+      - kind: has_many
+        target: Collection
+        via: "collection membership (PUT/DELETE /v2/collections/{collection_id}/notes/{note_id})"
+      - kind: has_many
+        target: Attachment
+        via: "note-linked attachment IDs"
+      - kind: has_many
+        target: AudioRecording
+        via: "note-linked recording IDs"
+  - name: Collection
+    id_field: id
+    endpoints:
+      - "POST /v2/collections"
+      - "GET /v2/collections"
+      - "GET /v2/collections/{collection_id}"
+      - "PATCH /v2/collections/{collection_id}"
+      - "DELETE /v2/collections/{collection_id}"
+    relationships:
+      - kind: has_many
+        target: Note
+        via: "membership link"
+  - name: Attachment
+    endpoints:
+      - "POST /v2/attachments/read"
+      - "POST /v2/attachments/answer-question"
+      - "GET /v2/note-attachments/{attachment_id}/download-url"
+    relationships:
+      - kind: belongs_to
+        target: Note
+        via: "attachment_id on note"
+  - name: AudioRecording
+    endpoints:
+      - "GET /v2/audio-recordings/{audio_recording_id}"
+    relationships:
+      - kind: belongs_to
+        target: Note
+        via: "linked recording ID"
+  - name: Session
+    id_field: session_id
+    endpoints:
+      - "POST /v2/sessions"
+      - "GET /v2/sessions/{session_id}"
+      - "PATCH /v2/sessions/{session_id}"
+      - "PUT /v2/sessions/{session_id}"
+      - "DELETE /v2/sessions/{session_id}"
+    relationships:
+      - kind: has_many
+        target: SessionEvent
+        via: "POST /v2/session-events/search"
+  - name: Event
+    id_field: event_id
+    endpoints:
+      - "GET /v2/events"
+      - "GET /v2/events/{event_id}"
+      - "GET /v2/event-types"
+    relationships:
+      - kind: belongs_to
+        target: EventType
+        via: "type"
+  - name: FollowUp
+    id_field: follow_up_id
+    endpoints:
+      - "GET /v2/follow-ups"
+      - "GET /v2/follow-ups/{follow_up_id}"
+  - name: Project
+    id_field: project_id
+    endpoints:
+      - "GET /v2/projects"
+      - "GET /v2/projects/{project_id}"
+  - name: Task
+    id_field: task_id
+    endpoints:
+      - "GET /v2/tasks"
+      - "GET /v2/tasks/{task_id}"
+  - name: Calendar
+    endpoints:
+      - "GET /v2/calendar/calendars"
+      - "GET /v2/calendar/connections"
+      - "GET /v2/calendar/events"
+      - "GET /v2/calendar/events/{event_id}"
+    relationships:
+      - kind: has_many
+        target: CalendarEvent
+        via: "calendar_id"
+      - kind: has_many
+        target: CalendarConnection
+        via: "provider"

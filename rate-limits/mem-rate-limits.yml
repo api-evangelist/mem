@@ -1,0 +1,38 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.mem.ai/api-reference/overview/rate-limits
+algorithm: leaky-bucket
+rate_limits:
+  - name: request-per-minute
+    limit_count: 100
+    interval: minute
+  - name: request-per-day
+    limit_count: 4000
+    interval: day
+  - name: complexity-per-minute
+    limit_count: 200
+    interval: minute
+  - name: complexity-per-day
+    limit_count: 8000
+    interval: day
+complexity:
+  default: 1
+  endpoints:
+    - endpoint: /v2/mem-it
+      complexity: 40
+headers:
+  - X-RateLimit-Bucket
+  - X-RateLimit-Limit
+  - X-RateLimit-Remaining
+  - X-RateLimit-Reset
+  - X-Complexity-Bucket
+  - X-Complexity-Limit
+  - X-Complexity-Remaining
+  - X-Complexity-Reset
+  - Retry-After
+exceeded_status: 429
+notes: >-
+  Two limit types: request limits and complexity limits (resource-intensive
+  endpoints consume more complexity tokens). Usage quotas (e.g. plan monthly
+  note-creation allowance) also return 429 with error.type "quota_exceeded" and
+  details.reset_time.

@@ -1,0 +1,58 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/mem-openapi-original.json
+docs: https://docs.mem.ai/api-reference/overview/error-handling
+format: custom-json
+envelope: '{ "error": { "type": <string>, "message": <string>, "details": <object> } }'
+machine_field: error.type
+notes: >-
+  Mem does NOT use RFC 9457 application/problem+json. Errors use a custom JSON
+  envelope where error.type is the stable machine-readable value and message is
+  human-facing. HTTP status codes below are the documented + OpenAPI-declared
+  responses. Quota exhaustion is surfaced as a 429 with error.type
+  "quota_exceeded" (distinct from rate-limiting), including details.reset_time.
+problems:
+  - status: 400
+    title: Bad request
+    meaning: Invalid parameters.
+    source: docs
+  - status: 401
+    title: Unauthorized
+    meaning: Invalid or missing bearer token.
+    source: docs
+  - status: 404
+    title: Resource not found
+    meaning: The requested note, collection, or resource does not exist or is not visible to the caller.
+    source: docs
+  - status: 304
+    title: Not modified
+    meaning: Conditional GET matched (If-None-Match); the resource is unchanged.
+    source: openapi
+  - status: 409
+    title: Conflict
+    meaning: A caller-provided create-only id already exists (notes and collections). Create is not an upsert.
+    source: docs
+  - status: 410
+    title: Gone
+    meaning: The resource has been permanently removed.
+    source: openapi
+  - status: 422
+    title: Unprocessable entity
+    meaning: Request validation failed (well-formed but semantically invalid).
+    source: openapi
+  - status: 429
+    title: Too many requests / quota exceeded
+    meaning: >-
+      Rate limit exceeded (request or complexity bucket) OR usage quota exhausted.
+      Includes a Retry-After header. Quota responses carry error.type
+      "quota_exceeded" and details.reset_time.
+    source: openapi+docs
+  - status: 500
+    title: Server error
+    meaning: Internal server error.
+    source: openapi
+error_types:
+  - type: quota_exceeded
+    http_status: 429
+    detail: Plan usage quota (e.g. free-tier monthly note creation limit) reached; details include current_plan, limit, used, reset_time.
+    docs: https://docs.mem.ai/api-reference/overview/error-handling

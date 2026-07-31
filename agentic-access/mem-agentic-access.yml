@@ -1,0 +1,884 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/mem-openapi-original.json
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 64
+  by_action_class:
+    connected: 26
+    acting: 38
+  by_consequence:
+    read: 26
+    write: 38
+  human_in_the_loop_required: 0
+operations:
+- path: /schema/openapi.json
+  method: get
+  operationId: getPublicClientOpenApiJson
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /schema/openapi.yaml
+  method: get
+  operationId: getPublicClientOpenApiYaml
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v0
+  method: get
+  operationId: app_src_api_routes_external_v0_views_root
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v0/mems
+  method: post
+  operationId: app_src_api_routes_external_v0_views_create_mem
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v0/mems/{mem_id}/append
+  method: post
+  operationId: app_src_api_routes_external_v0_views_append_mem
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v0/mems/batch
+  method: post
+  operationId: app_src_api_routes_external_v0_views_batch_create_mems
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/mem-it
+  method: post
+  operationId: app_src_api_routes_external_v1_mem_it_views_mem_it
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/notes
+  method: post
+  operationId: app_src_api_routes_external_v1_notes_views_create_note
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/notes/{note_id}
+  method: delete
+  operationId: app_src_api_routes_external_v1_notes_views_delete_note
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/service-info
+  method: get
+  operationId: get_service_info_v1_service_info_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/attachments/answer-question
+  method: post
+  operationId: app_src_api_routes_external_v2_attachments_views_answer_question_about_attachment
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/attachments/read
+  method: post
+  operationId: app_src_api_routes_external_v2_attachments_views_read_attachment
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/audio-recordings/{audio_recording_id}
+  method: get
+  operationId: app_src_api_routes_external_v2_audio_recordings_views_read_audio_recording
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/calendar/calendars
+  method: get
+  operationId: app_src_api_routes_external_v2_calendar_views_list_calendars
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/calendar/calendars/settings
+  method: post
+  operationId: app_src_api_routes_external_v2_calendar_views_update_calendar_settings
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/calendar/connections
+  method: get
+  operationId: app_src_api_routes_external_v2_calendar_views_list_calendar_connections
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/calendar/connections/{provider}/callback
+  method: post
+  operationId: app_src_api_routes_external_v2_calendar_views_calendar_oauth_callback
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/calendar/connections/{provider}/connect
+  method: post
+  operationId: app_src_api_routes_external_v2_calendar_views_connect_calendar
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/calendar/connections/{provider}/disconnect
+  method: post
+  operationId: app_src_api_routes_external_v2_calendar_views_disconnect_calendar
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/calendar/events
+  method: get
+  operationId: app_src_api_routes_external_v2_calendar_views_list_calendar_events
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/calendar/events/{event_id}
+  method: get
+  operationId: app_src_api_routes_external_v2_calendar_views_read_calendar_event
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/calendar/reconcile
+  method: post
+  operationId: app_src_api_routes_external_v2_calendar_views_reconcile_calendar
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/collections
+  method: get
+  operationId: app_src_api_routes_external_v2_collections_views_list_collections
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/collections
+  method: post
+  operationId: app_src_api_routes_external_v2_collections_views_create_collection
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/collections/{collection_id}
+  method: delete
+  operationId: app_src_api_routes_external_v2_collections_views_delete_collection
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/collections/{collection_id}
+  method: get
+  operationId: app_src_api_routes_external_v2_collections_views_read_collection
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/collections/{collection_id}
+  method: patch
+  operationId: app_src_api_routes_external_v2_collections_views_update_collection
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/collections/{collection_id}/notes/{note_id}
+  method: delete
+  operationId: app_src_api_routes_external_v2_collections_views_remove_note_from_collection
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/collections/{collection_id}/notes/{note_id}
+  method: put
+  operationId: app_src_api_routes_external_v2_collections_views_add_note_to_collection
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/collections/{source_collection_id}/notes/{note_id}/move
+  method: post
+  operationId: app_src_api_routes_external_v2_collections_views_move_note
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/collections/search
+  method: post
+  operationId: app_src_api_routes_external_v2_collections_views_search_collections
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/event-types
+  method: get
+  operationId: app_src_api_routes_external_v2_events_views_list_event_types
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/events
+  method: get
+  operationId: app_src_api_routes_external_v2_events_views_list_events
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/events/{event_id}
+  method: get
+  operationId: app_src_api_routes_external_v2_events_views_read_event
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/follow-ups
+  method: get
+  operationId: app_src_api_routes_external_v2_follow_ups_views_list_follow_ups
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/follow-ups/{follow_up_id}
+  method: get
+  operationId: app_src_api_routes_external_v2_follow_ups_views_read_follow_up
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/mcp/chatgpt/fetch
+  method: post
+  operationId: app_src_api_routes_external_v2_mcp_chatgpt_views_fetch_resources
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/mcp/chatgpt/search
+  method: post
+  operationId: app_src_api_routes_external_v2_mcp_chatgpt_views_search_resources
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/mcp/initialize
+  method: post
+  operationId: app_src_api_routes_external_v2_mcp_initialize_views_initialize_mcp
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/mcp/notes/{note_id}
+  method: get
+  operationId: app_src_api_routes_external_v2_mcp_notes_views_view_note
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/mcp/notes/search
+  method: post
+  operationId: app_src_api_routes_external_v2_mcp_notes_views_search_notes
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/mem-it
+  method: post
+  operationId: app_src_api_routes_external_v2_mem_it_views_mem_it
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/note-attachments/{attachment_id}/download-url
+  method: get
+  operationId: app_src_api_routes_external_v2_notes_views_get_note_attachment_download_url
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/notes
+  method: get
+  operationId: app_src_api_routes_external_v2_notes_views_list_notes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/notes
+  method: post
+  operationId: app_src_api_routes_external_v2_notes_views_create_note
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/notes/{note_id}
+  method: delete
+  operationId: app_src_api_routes_external_v2_notes_views_delete_note
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/notes/{note_id}
+  method: get
+  operationId: app_src_api_routes_external_v2_notes_views_read_note
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/notes/{note_id}
+  method: patch
+  operationId: app_src_api_routes_external_v2_notes_views_update_note
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/notes/{note_id}/created-at
+  method: patch
+  operationId: app_src_api_routes_external_v2_notes_views_set_note_created_at
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/notes/{note_id}/related-notes
+  method: get
+  operationId: app_src_api_routes_external_v2_notes_views_find_related_notes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/notes/{note_id}/restore
+  method: post
+  operationId: app_src_api_routes_external_v2_notes_views_restore_note
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/notes/{note_id}/trash
+  method: post
+  operationId: app_src_api_routes_external_v2_notes_views_trash_note
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/notes/extended-search
+  method: post
+  operationId: app_src_api_routes_external_v2_notes_views_extended_search_notes
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/notes/search
+  method: post
+  operationId: app_src_api_routes_external_v2_notes_views_search_notes
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/projects
+  method: get
+  operationId: app_src_api_routes_external_v2_projects_views_list_projects
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/projects/{project_id}
+  method: get
+  operationId: app_src_api_routes_external_v2_projects_views_read_project
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/session-events/search
+  method: post
+  operationId: app_src_api_routes_external_v2_session_events_views_search_session_events
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/sessions
+  method: post
+  operationId: app_src_api_routes_external_v2_sessions_views_create_session
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/sessions/{session_id}
+  method: delete
+  operationId: app_src_api_routes_external_v2_sessions_views_delete_session
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/sessions/{session_id}
+  method: get
+  operationId: app_src_api_routes_external_v2_sessions_views_read_session
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/sessions/{session_id}
+  method: patch
+  operationId: app_src_api_routes_external_v2_sessions_views_update_session
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/sessions/{session_id}
+  method: put
+  operationId: app_src_api_routes_external_v2_sessions_views_upsert_session
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/tasks
+  method: get
+  operationId: app_src_api_routes_external_v2_tasks_views_list_tasks
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/tasks/{task_id}
+  method: get
+  operationId: app_src_api_routes_external_v2_tasks_views_read_task
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

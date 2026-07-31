@@ -1,0 +1,29 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.mem.ai/api-reference/overview/changelog
+versioning:
+  scheme: uri-path
+  versions: [v0, v1, v2]
+  current: v2
+  docs: https://docs.mem.ai/api-reference/overview/changelog
+  detail: >-
+    URI-path versioning. v0 and v1 are legacy (mem/notes create + Mem It); the
+    v2 series is current and actively extended (asynchronous Mem It, note
+    reading, collections, semantic search, calendar, sessions, tasks).
+deprecation:
+  policy_url: null
+  sunset_header: false
+  detail: >-
+    No formal published deprecation/sunset-header policy found. Breaking changes
+    are announced in the dated changelog and the Slack community; several
+    breaking changes (create-only ids, version-required updates) shipped through
+    the changelog. Legacy v0/v1 endpoints remain available alongside v2.
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+status_page_note: >-
+  No dedicated status.mem.ai page found. Rate-limit / quota changes and outages
+  are communicated via the Slack community (https://get.mem.ai/slack).
+changelog: https://docs.mem.ai/api-reference/overview/changelog
+deprecated_operations: []
