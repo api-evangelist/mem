@@ -184,7 +184,7 @@ common:
 - type: TrustCenter
   url: https://trust.mem.ai/
 - type: OpenAPI
-  url: openapi/mem-openapi-original.json
+  url: openapi/_original/mem-openapi-original.json
 - type: MCPServer
   url: mcp/mem-mcp.yml
 - type: LLMsTxt
