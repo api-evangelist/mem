@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mem Public Client CoreApi__service-info API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CoreApi__service-info",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Service Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/v1/service-info",
+            "headers": [
+              {
+                "name": "If-None-Match",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Get Service Info"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

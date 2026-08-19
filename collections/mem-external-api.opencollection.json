@@ -1,0 +1,1381 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mem Public Client CoreApi__service-info external API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "external",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getPublicClientOpenApiJson",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/schema/openapi.json"
+          }
+        },
+        {
+          "info": {
+            "name": "getPublicClientOpenApiYaml",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/schema/openapi.yaml"
+          }
+        },
+        {
+          "info": {
+            "name": "Root",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/v0"
+          },
+          "docs": "Root"
+        },
+        {
+          "info": {
+            "name": "Create Mem",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v0/mems"
+          },
+          "docs": "Create Mem"
+        },
+        {
+          "info": {
+            "name": "Append Mem",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v0/mems/:mem_id/append",
+            "params": [
+              {
+                "name": "mem_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Append Mem"
+        },
+        {
+          "info": {
+            "name": "Batch Create Mems",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v0/mems/batch"
+          },
+          "docs": "Batch Create Mems"
+        },
+        {
+          "info": {
+            "name": "Mem It",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v1/mem-it",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Mem It"
+        },
+        {
+          "info": {
+            "name": "Create Note",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v1/notes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Note"
+        },
+        {
+          "info": {
+            "name": "Delete Note",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mem.ai/v1/notes/:note_id",
+            "params": [
+              {
+                "name": "note_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Note"
+        },
+        {
+          "info": {
+            "name": "Answer Question About Attachment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v2/attachments/answer-question",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ask one focused question about a single attachment by kind and ID.\nUse `attachment_kind` and `attachment_id` returned in note attachment metadata."
+        },
+        {
+          "info": {
+            "name": "Read Attachment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v2/attachments/read",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Read structured content for a single attachment by kind and ID.\nUse `attachment_kind` and `attachment_id` returned in note attachment metadata."
+        },
+        {
+          "info": {
+            "name": "Read Audio Recording",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/v2/audio-recordings/:audio_recording_id",
+            "params": [
+              {
+                "name": "transcript_speaker_labels",
+                "value": "",
+                "type": "query",
+                "description": "When true (default), transcript turns are prefixed with available speaker\nlabels. Labels may be participant names, generic diarization labels such as\n`[Speaker 1]`, or app channel labels such as `[Speaker]` and\n`[Other Speakers]`.\nParticipant names are included only when available; many transcripts use\ngeneric diarization labels or app channel labels instead. Generic labels are\nspeaker grouping context, not verified participant identity.\nWhen false, the same transcript content is returned without speaker labels."
+              },
+              {
+                "name": "audio_recording_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the audio recording to read. The caller must be able to access this recording."
+              }
+            ]
+          },
+          "docs": "Fetch the current public transcript and metadata for a single audio recording by ID."
+        },
+        {
+          "info": {
+            "name": "List Calendars",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/v2/calendar/calendars"
+          },
+          "docs": "List Calendars"
+        },
+        {
+          "info": {
+            "name": "Update Calendar Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v2/calendar/calendars/settings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Calendar Settings"
+        },
+        {
+          "info": {
+            "name": "List Calendar Connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/v2/calendar/connections"
+          },
+          "docs": "List Calendar Connections"
+        },
+        {
+          "info": {
+            "name": "Calendar Oauth Callback",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v2/calendar/connections/:provider/callback",
+            "params": [
+              {
+                "name": "provider",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Calendar Oauth Callback"
+        },
+        {
+          "info": {
+            "name": "Connect Calendar",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v2/calendar/connections/:provider/connect",
+            "params": [
+              {
+                "name": "provider",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Connect Calendar"
+        },
+        {
+          "info": {
+            "name": "Disconnect Calendar",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v2/calendar/connections/:provider/disconnect",
+            "params": [
+              {
+                "name": "provider",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Disconnect Calendar"
+        },
+        {
+          "info": {
+            "name": "List Calendar Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/v2/calendar/events",
+            "params": [
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "Filter events ending at or after this time."
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query",
+                "description": "Filter events starting at or before this time."
+              },
+              {
+                "name": "calendar_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by external calendar ID (provider calendar ID)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of events to return."
+              }
+            ]
+          },
+          "docs": "List Calendar Events"
+        },
+        {
+          "info": {
+            "name": "Read Calendar Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/v2/calendar/events/:event_id",
+            "params": [
+              {
+                "name": "event_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the calendar event to read."
+              }
+            ]
+          },
+          "docs": "Read Calendar Event"
+        },
+        {
+          "info": {
+            "name": "Reconcile Calendar",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v2/calendar/reconcile",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reconcile Calendar"
+        },
+        {
+          "info": {
+            "name": "List Collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/v2/collections",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of collections in this page.\nUse smaller values for lower latency.\nDefault is 50; valid range is 1 to 100."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Opaque cursor from a previous list response.\nOmit for the first page.\nIMPORTANT: Reuse with the same filters and `order_by` settings."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort key for pagination boundaries.\nUse `updated_at` (default) for recency feeds.\nUse `created_at` for creation-order views."
+              },
+              {
+                "name": "filter_by_created_after",
+                "value": "",
+                "type": "query",
+                "description": "Optional inclusive lower bound for collection creation time (ISO 8601).\nThe timestamp must include a timezone offset such as `Z` or `+01:00`."
+              },
+              {
+                "name": "filter_by_created_before",
+                "value": "",
+                "type": "query",
+                "description": "Optional inclusive upper bound for collection creation time (ISO 8601).\nThe timestamp must include a timezone offset such as `Z` or `+01:00`."
+              },
+              {
+                "name": "filter_by_updated_after",
+                "value": "",
+                "type": "query",
+                "description": "Optional inclusive lower bound for collection update time (ISO 8601).\nThe timestamp must include a timezone offset such as `Z` or `+01:00`."
+              },
+              {
+                "name": "filter_by_updated_before",
+                "value": "",
+                "type": "query",
+                "description": "Optional inclusive upper bound for collection update time (ISO 8601).\nThe timestamp must include a timezone offset such as `Z` or `+01:00`."
+              }
+            ]
+          },
+          "docs": "List collections visible to the authenticated caller with cursor pagination.\nResults are ordered by `order_by` and return `next_page` when additional rows are available.\nFor relevance-ranked retrieval by query, use `POST /v2/collections/search`."
+        },
+        {
+          "info": {
+            "name": "Create Collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v2/collections",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a collection with optional caller-provided ID and timestamps.\nIf `id` already exists, this request returns a conflict.\nUse collection membership endpoints to add, remove, or move notes between collections."
+        },
+        {
+          "info": {
+            "name": "Read Collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/v2/collections/:collection_id",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the collection to read. Use an ID returned by create/list/search. The caller must be able to access this collection."
+              }
+            ]
+          },
+          "docs": "Fetch metadata for a single collection by ID.\nThis endpoint returns collection metadata only, not a note list for that collection.\nFor discovery flows, use `GET /v2/collections` or `POST /v2/collections/search`."
+        },
+        {
+          "info": {
+            "name": "Update Collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.mem.ai/v2/collections/:collection_id",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the collection to update. Use an ID returned by create/list/search. The caller must be able to edit this collection."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update metadata for a collection by ID.\nUse this endpoint to rename a collection by setting `title`.\nThis endpoint updates only provided fields (`title`, `description`) and leaves omitted fields unchanged.\nFor read-only retrieval, use `GET /v2/collections/{collection_id}`."
+        },
+        {
+          "info": {
+            "name": "Delete Collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mem.ai/v2/collections/:collection_id",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the collection to permanently delete. Use an ID returned by create/list/search. The caller must be able to access this collection."
+              }
+            ]
+          },
+          "docs": "Permanently delete a collection.\nHard-deleting removes the collection resource itself.\nFor membership-only changes, use note add, remove, or move collection endpoints."
+        },
+        {
+          "info": {
+            "name": "Add Note To Collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.mem.ai/v2/collections/:collection_id/notes/:note_id",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the collection that will receive the note. Use an ID returned by create/list/search. The caller must be able to contribute to this collection."
+              },
+              {
+                "name": "note_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the note to add. Use an ID returned by create/list/search. The caller must be able to access this note."
+              }
+            ]
+          },
+          "docs": "Add an existing note to an existing collection.\nThis operation only creates the membership link and does not modify note or collection content.\nUse create endpoints to create notes or collections."
+        },
+        {
+          "info": {
+            "name": "Remove Note From Collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mem.ai/v2/collections/:collection_id/notes/:note_id",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the collection to unlink. Use an ID returned by create/list/search. Caller must be able to edit the note or contribute to the collection."
+              },
+              {
+                "name": "note_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the note to unlink. Use an ID returned by create/list/search. Caller must be able to edit the note or contribute to the collection."
+              }
+            ]
+          },
+          "docs": "Remove a note from a collection while keeping both resources.\nThis operation only removes the membership link between IDs.\nUse note/collection deletion endpoints to remove resources."
+        },
+        {
+          "info": {
+            "name": "Move Note",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v2/collections/:source_collection_id/notes/:note_id/move",
+            "params": [
+              {
+                "name": "source_collection_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the collection that currently contains the note. Caller must be able to remove the note from this collection."
+              },
+              {
+                "name": "note_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the note to move. Use an ID returned by create/list/search."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Move a note from one collection to another collection.\nThis operation adds the note to the target collection, then removes it from the source collection.\nIt does not modify note or collection content."
+        },
+        {
+          "info": {
+            "name": "Search Collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v2/collections/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search collections using free-text relevance matching.\nReturns a bounded relevance-ranked result set and does not return `next_page`.\nFor deterministic chronological pagination, use `GET /v2/collections`."
+        },
+        {
+          "info": {
+            "name": "List Event Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/v2/event-types"
+          },
+          "docs": "List event types supported by the Events API."
+        },
+        {
+          "info": {
+            "name": "List Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/v2/events",
+            "params": [
+              {
+                "name": "after_sequence",
+                "value": "",
+                "type": "query",
+                "description": "Return events with a sequence greater than this value.\nStore `next_after_sequence` from each response as the next watermark."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of events to return. Max: 1000."
+              },
+              {
+                "name": "types",
+                "value": "",
+                "type": "query",
+                "description": "Optional repeated event type filter, for example\n`?types=mem.note.created.v1&types=mem.conversation.message_received.v1`."
+              },
+              {
+                "name": "entity_kind",
+                "value": "",
+                "type": "query",
+                "description": "Optional primary entity kind filter, such as `note`."
+              },
+              {
+                "name": "entity_id",
+                "value": "",
+                "type": "query",
+                "description": "Optional primary entity UUID filter."
+              }
+            ]
+          },
+          "docs": "List events for the authenticated account in sequence order.\nEvents are a stable external projection over Mem domain events. They are\nthin by default; fetch full object state with the corresponding read API."
+        },
+        {
+          "info": {
+            "name": "Read Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/v2/events/:event_id",
+            "params": [
+              {
+                "name": "event_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the event to read."
+              }
+            ]
+          },
+          "docs": "Fetch a single event by ID."
+        },
+        {
+          "info": {
+            "name": "List Follow Ups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/v2/follow-ups",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of follow-ups in this page.\nDefault is 50; valid range is 1 to 100."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Opaque cursor from a previous list response.\nOmit for the first page.\nIMPORTANT: Reuse with the same `order_by`, `status`, `task_id`, and `project_id` values."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort key for pagination boundaries.\nUse `scheduled_for` (default) to view follow-ups by trigger time.\nUse `updated_at` for recency feeds, or `created_at` for creation-order views."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Optional filter by follow-up status."
+              },
+              {
+                "name": "task_id",
+                "value": "",
+                "type": "query",
+                "description": "Optional filter to follow-ups associated with a single task."
+              },
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "query",
+                "description": "Optional filter to follow-ups associated with a single project."
+              }
+            ]
+          },
+          "docs": "List follow-ups for the authenticated caller's assistant with cursor pagination.\nResults are ordered by `order_by` and return `next_page` when additional rows are available.\nUse the optional `status`, `task_id`, and `project_id` filters to narrow the result set."
+        },
+        {
+          "info": {
+            "name": "Read Follow Up",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/v2/follow-ups/:follow_up_id",
+            "params": [
+              {
+                "name": "follow_up_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the follow-up to read. The caller's assistant must own this follow-up."
+              }
+            ]
+          },
+          "docs": "Fetch metadata for a single follow-up by ID."
+        },
+        {
+          "info": {
+            "name": "Fetch Resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v2/mcp/chatgpt/fetch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetch Resources"
+        },
+        {
+          "info": {
+            "name": "Search Resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v2/mcp/chatgpt/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search Resources"
+        },
+        {
+          "info": {
+            "name": "Initialize Mcp",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v2/mcp/initialize",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initialize Mcp"
+        },
+        {
+          "info": {
+            "name": "View Note",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/v2/mcp/notes/:note_id",
+            "params": [
+              {
+                "name": "note_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "View Note"
+        },
+        {
+          "info": {
+            "name": "Search Notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v2/mcp/notes/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search Notes"
+        },
+        {
+          "info": {
+            "name": "Mem It",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v2/mem-it",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Mem It"
+        },
+        {
+          "info": {
+            "name": "Get Note Attachment Download Url",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/v2/note-attachments/:attachment_id/download-url",
+            "params": [
+              {
+                "name": "attachment_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the note attachment to download. The caller must be able to access this attachment."
+              }
+            ]
+          },
+          "docs": "Generate a temporary signed download URL for a note attachment.\nUse this when note content references an attachment, but the underlying file URL is not directly downloadable.\nThe caller must be able to access the requested attachment."
+        },
+        {
+          "info": {
+            "name": "List Notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/v2/notes",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of notes in this page.\nUse smaller values for lower latency.\nDefault is 50; valid range is 1 to 100."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Opaque cursor from a previous list response.\nOmit for the first page.\nIMPORTANT: Reuse with the same filters and `order_by` settings."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort key for pagination boundaries.\nUse `updated_at` (default) for recency feeds.\nUse `created_at` for creation-order views."
+              },
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "query",
+                "description": "Optional collection filter by UUID.\nWhen set, only notes linked to this collection are returned."
+              },
+              {
+                "name": "filter_by_created_after",
+                "value": "",
+                "type": "query",
+                "description": "Optional inclusive lower bound for note creation time (ISO 8601).\nThe timestamp must include a timezone offset such as `Z` or `+01:00`."
+              },
+              {
+                "name": "filter_by_created_before",
+                "value": "",
+                "type": "query",
+                "description": "Optional inclusive upper bound for note creation time (ISO 8601).\nThe timestamp must include a timezone offset such as `Z` or `+01:00`."
+              },
+              {
+                "name": "filter_by_updated_after",
+                "value": "",
+                "type": "query",
+                "description": "Optional inclusive lower bound for note update time (ISO 8601).\nThe timestamp must include a timezone offset such as `Z` or `+01:00`."
+              },
+              {
+                "name": "filter_by_updated_before",
+                "value": "",
+                "type": "query",
+                "description": "Optional inclusive upper bound for note update time (ISO 8601).\nThe timestamp must include a timezone offset such as `Z` or `+01:00`."
+              },
+              {
+                "name": "contains_open_tasks",
+                "value": "",
+                "type": "query",
+                "description": "When true, include notes that contain at least one open task item.\nWhen multiple `contains_*` fields are true, notes matching any selected\nfilter may be returned."
+              },
+              {
+                "name": "contains_tasks",
+                "value": "",
+                "type": "query",
+                "description": "When true, include notes that contain at least one task item\n(open or closed).\nWhen multiple `contains_*` fields are true, notes matching any selected\nfilter may be returned."
+              },
+              {
+                "name": "contains_images",
+                "value": "",
+                "type": "query",
+                "description": "When true, include notes that contain image media\n(including image and GIF kinds).\nWhen multiple `contains_*` fields are true, notes matching any selected\nfilter may be returned."
+              },
+              {
+                "name": "contains_files",
+                "value": "",
+                "type": "query",
+                "description": "When true, include notes that contain file-like attachments\n(including file and PDF kinds).\nWhen multiple `contains_*` fields are true, notes matching any selected\nfilter may be returned."
+              },
+              {
+                "name": "include_note_content",
+                "value": "",
+                "type": "query",
+                "description": "When true, include full markdown content for each returned note.\nIMPORTANT: This increases payload size and can increase latency."
+              }
+            ]
+          },
+          "docs": "List notes visible to the authenticated caller with cursor pagination.\nWhen multiple `contains_*` fields are true, a note may match any of them.\nResults are ordered by `order_by` and return `next_page` when additional rows are available.\nFor relevance-ranked retrieval by query, use `POST /v2/notes/search`."
+        },
+        {
+          "info": {
+            "name": "Create Note",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v2/notes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a note with an optional note ID, timestamps, and collection links.\nIf omitted, Mem generates the note ID.\nThe first line of `content` becomes the note title."
+        },
+        {
+          "info": {
+            "name": "Read Note",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/v2/notes/:note_id",
+            "params": [
+              {
+                "name": "note_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the note to read. Use an ID returned by create/list/search. The caller must be able to access this note."
+              }
+            ]
+          },
+          "docs": "Fetch the full current state of a single note by ID.\nIf the note is in trash, the response still returns the note and includes `trashed_at`.\nFor discovery flows, use `GET /v2/notes` or `POST /v2/notes/search`."
+        },
+        {
+          "info": {
+            "name": "Update Note",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.mem.ai/v2/notes/:note_id",
+            "params": [
+              {
+                "name": "note_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the note to update. Use an ID returned by create/list/search. The caller must be able to edit this note."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a complete markdown body for a note and the exact `version` being updated.\nSend the full desired body in `content` (not a partial markdown patch).\nThe first line of `content` becomes the updated title.\nTrashed notes must be restored before they can be updated."
+        },
+        {
+          "info": {
+            "name": "Delete Note",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mem.ai/v2/notes/:note_id",
+            "params": [
+              {
+                "name": "note_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the note to permanently delete. Use an ID returned by create/list/search. The caller must be able to edit this note."
+              }
+            ]
+          },
+          "docs": "Permanently delete a note.\nHard-deleted notes cannot be restored.\nFor recoverable removal, use `POST /v2/notes/{note_id}/trash`."
+        },
+        {
+          "info": {
+            "name": "Set Note Created At",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.mem.ai/v2/notes/:note_id/created-at",
+            "params": [
+              {
+                "name": "note_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the note whose visible creation timestamp should change. The caller must own this note."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set a note's visible creation timestamp without changing its content.\nThe supplied `created_at` must include a timezone offset and cannot be in the future.\nIt can only backdate the note: the timestamp cannot be later than\nwhen the note was originally created.\nThis operation changes note metadata only.\nTrashed notes must be restored before their creation date can be changed."
+        },
+        {
+          "info": {
+            "name": "Find Related Notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/v2/notes/:note_id/related-notes",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of related notes to return.\nDefault is 10; valid range is 1 to 20."
+              },
+              {
+                "name": "note_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the source note. The caller must be able to access this note."
+              }
+            ]
+          },
+          "docs": "Find notes semantically related to the current persisted content of a note.\nThe source note is embedded at request time, so newly created or recently\nupdated notes can be used before asynchronous indexing catches up.\nCandidate related notes still come from the note search index."
+        },
+        {
+          "info": {
+            "name": "Restore Note",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v2/notes/:note_id/restore",
+            "params": [
+              {
+                "name": "note_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the note to restore from trash. Use an ID returned by create/list/search. The caller must be able to edit this note."
+              }
+            ]
+          },
+          "docs": "Restore a previously trashed note to the active note set.\nThis only reverses soft-delete lifecycle state.\nNotes permanently deleted via `DELETE /v2/notes/{note_id}` cannot be restored."
+        },
+        {
+          "info": {
+            "name": "Trash Note",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v2/notes/:note_id/trash",
+            "params": [
+              {
+                "name": "note_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the note to move to trash. Use an ID returned by create/list/search. The caller must be able to edit this note."
+              }
+            ]
+          },
+          "docs": "Soft-delete a note by moving it to trash.\nTrashed notes can be restored via `POST /v2/notes/{note_id}/restore`.\nFor irreversible deletion, use `DELETE /v2/notes/{note_id}`."
+        },
+        {
+          "info": {
+            "name": "Extended Search Notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v2/notes/extended-search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search notes and note-linked attachments together.\nReturns note hits with attachment match context for PDFs, images, audio\nrecordings, calendar events, and emails. Use returned attachment IDs with\nthe attachment tools for deeper inspection."
+        },
+        {
+          "info": {
+            "name": "Search Notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v2/notes/search",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of notes in this search page.\nUse smaller values for lower latency.\nDefault is 20; valid range is 1 to 50."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of matching notes to skip before returning results.\nThis value is zero-based."
+              },
+              {
+                "name": "snapshot_id",
+                "value": "",
+                "type": "query",
+                "description": "Opaque search snapshot identifier returned by a previous search page.\nRequired when requesting later pages with `offset > 0`."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search notes using a required free-text query and structured filters.\nWhen multiple `filter_by_contains_*` fields are true, a note may match any of them.\nReturns note results from a bounded search snapshot with deterministic offset pagination.\nQuery-based searches are relevance-ranked within the bounded search snapshot window.\nReuse the returned `snapshot_id` when requesting later pages.\nThe returned `total` reflects the bounded search snapshot, capped by the 100-result search window.\nFor determ"
+        },
+        {
+          "info": {
+            "name": "List Projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/v2/projects",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of projects in this page.\nDefault is 50; valid range is 1 to 100."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Opaque cursor from a previous list response.\nOmit for the first page.\nIMPORTANT: Reuse with the same `order_by` and `status` values."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort key for pagination boundaries.\nUse `updated_at` (default) for recency feeds.\nUse `created_at` for creation-order views."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Optional filter by project status."
+              }
+            ]
+          },
+          "docs": "List projects for the authenticated caller's assistant with cursor pagination.\nResults are ordered by `order_by` and return `next_page` when additional rows are available.\nUse the optional `status` filter to narrow the result set."
+        },
+        {
+          "info": {
+            "name": "Read Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/v2/projects/:project_id",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the project to read. The caller's assistant must own this project."
+              }
+            ]
+          },
+          "docs": "Fetch metadata for a single project by ID."
+        },
+        {
+          "info": {
+            "name": "Search Session Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v2/session-events/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search Session Events"
+        },
+        {
+          "info": {
+            "name": "Create Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v2/sessions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Session"
+        },
+        {
+          "info": {
+            "name": "Read Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/v2/sessions/:session_id",
+            "params": [
+              {
+                "name": "session_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Read Session"
+        },
+        {
+          "info": {
+            "name": "Upsert Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.mem.ai/v2/sessions/:session_id",
+            "params": [
+              {
+                "name": "session_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upsert Session"
+        },
+        {
+          "info": {
+            "name": "Update Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.mem.ai/v2/sessions/:session_id",
+            "params": [
+              {
+                "name": "session_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Session"
+        },
+        {
+          "info": {
+            "name": "Delete Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mem.ai/v2/sessions/:session_id",
+            "params": [
+              {
+                "name": "session_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Session"
+        },
+        {
+          "info": {
+            "name": "List Tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/v2/tasks",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of tasks in this page.\nDefault is 50; valid range is 1 to 100."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Opaque cursor from a previous list response.\nOmit for the first page.\nIMPORTANT: Reuse with the same `order_by`, `status`, and `project_id` values."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort key for pagination boundaries.\nUse `updated_at` (default) for recency feeds.\nUse `created_at` for creation-order views."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Optional filter by task status."
+              },
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "query",
+                "description": "Optional filter to tasks belonging to a single project."
+              }
+            ]
+          },
+          "docs": "List tasks for the authenticated caller's assistant with cursor pagination.\nResults are ordered by `order_by` and return `next_page` when additional rows are available.\nUse the optional `status` and `project_id` filters to narrow the result set."
+        },
+        {
+          "info": {
+            "name": "Read Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/v2/tasks/:task_id",
+            "params": [
+              {
+                "name": "task_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the task to read. The caller's assistant must own this task."
+              }
+            ]
+          },
+          "docs": "Fetch metadata for a single task by ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

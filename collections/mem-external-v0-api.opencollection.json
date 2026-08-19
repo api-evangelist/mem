@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mem Public Client CoreApi__service-info external-v0 API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "external-v0",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Root",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mem.ai/v0"
+          },
+          "docs": "Root"
+        },
+        {
+          "info": {
+            "name": "Create Mem",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v0/mems"
+          },
+          "docs": "Create Mem"
+        },
+        {
+          "info": {
+            "name": "Append Mem",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v0/mems/:mem_id/append",
+            "params": [
+              {
+                "name": "mem_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Append Mem"
+        },
+        {
+          "info": {
+            "name": "Batch Create Mems",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v0/mems/batch"
+          },
+          "docs": "Batch Create Mems"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

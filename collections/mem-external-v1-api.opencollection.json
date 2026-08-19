@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mem Public Client CoreApi__service-info external-v1 API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "external-v1",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Mem It",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v1/mem-it",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Mem It"
+        },
+        {
+          "info": {
+            "name": "Create Note",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mem.ai/v1/notes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Note"
+        },
+        {
+          "info": {
+            "name": "Delete Note",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mem.ai/v1/notes/:note_id",
+            "params": [
+              {
+                "name": "note_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Note"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

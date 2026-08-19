@@ -1,0 +1,332 @@
+{
+  "item": [
+    {
+      "id": "fa747951-1b37-4975-bea6-05505a3daa5e",
+      "name": "external-v1",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e969aec2-2a78-4c38-9287-a0570aa427be",
+          "name": "Mem It",
+          "request": {
+            "name": "Mem It",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "mem-it"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"input\": \"<string>\",\n  \"context\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"timestamp\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6c53658f-f003-498d-8f52-013991fcc9b4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "mem-it"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": \"<string>\",\n  \"context\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"timestamp\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"operations\": [\n    {\n      \"note_id\": \"01234567-89ab-cdef-0123-456789abcdef\",\n      \"title\": \"AI Trends 2025 - Key Findings\",\n      \"type\": \"created-note\",\n      \"url\": \"https://app.mem.ai/m/01234567-89ab-cdef-0123-456789abcdef\"\n    }\n  ],\n  \"request_id\": \"api-request-036ed6c7-de00-459f-a89b-43d26aafe522\",\n  \"status\": \"completed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b54d0f89-525b-450a-be82-64bbc5418651",
+          "name": "Create Note",
+          "request": {
+            "name": "Create Note",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "notes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content\": \"<string>\",\n  \"add_to_collections\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apply_template\": \"<string>\",\n  \"auto_format\": \"<boolean>\",\n  \"auto_organize\": \"<boolean>\",\n  \"created_at\": \"<dateTime>\",\n  \"id\": \"<uuid>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b71d5d84-e3fc-48fc-af63-155c3f59d419",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content\": \"# Meeting with Product Team\\n\\nDiscussion Topics:\\n- Roadmap updates\\n- Feature prioritization\\n\\nAction Items:\\n- Schedule follow-up with design\\n- Share Q2 priorities document\",\n  \"add_to_collections\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apply_template\": \"<string>\",\n  \"auto_format\": \"<boolean>\",\n  \"auto_organize\": \"<boolean>\",\n  \"created_at\": \"<dateTime>\",\n  \"id\": \"<uuid>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request_id\": \"string\",\n  \"id\": \"6201e684-b914-62eb-0529-5403ad856f81\",\n  \"url\": \"string\",\n  \"title\": \"string\",\n  \"created_at\": \"1958-02-06T12:10:54.982Z\",\n  \"updated_at\": \"1964-10-01T07:22:24.100Z\",\n  \"content\": \"string\",\n  \"operations\": [\n    {\n      \"note_id\": \"2de4f05b-cc6e-a438-5830-46d69714084c\",\n      \"title\": \"string\",\n      \"type\": \"created-note\",\n      \"url\": \"string\"\n    },\n    {\n      \"note_id\": \"b901843e-39c8-cc0c-edea-038b5efbc14b\",\n      \"title\": \"string\",\n      \"type\": \"created-note\",\n      \"url\": \"string\"\n    }\n  ],\n  \"status\": \"failed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9cb8edfc-0aed-463d-b193-717172ed3b25",
+          "name": "Delete Note",
+          "request": {
+            "name": "Delete Note",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "notes",
+                ":note_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "note_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "44b5c4d8-016f-4e74-ad11-c6804b506152",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "notes",
+                    ":note_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "note_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request_id\": \"string\",\n  \"operations\": [\n    {\n      \"note_id\": \"8cae93d4-bb3d-4585-3e45-e3d5ca8e6173\",\n      \"title\": \"string\",\n      \"type\": \"created-note\",\n      \"url\": \"string\"\n    },\n    {\n      \"note_id\": \"0ba9134e-9ce7-49ee-5886-d64024f8bc7a\",\n      \"title\": \"string\",\n      \"type\": \"created-note\",\n      \"url\": \"string\"\n    }\n  ],\n  \"status\": \"completed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mem.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6d369c3a-7e39-4ad0-9c88-9eeaeef536b4",
+    "name": "Mem Public Client CoreApi__service-info external-v1 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The external developer API exposed through api.mem.ai. This compatibility projection remains independent from first-party product routes.",
+      "type": "text/plain"
+    }
+  }
+}
