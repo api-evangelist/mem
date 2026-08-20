@@ -35,6 +35,17 @@ modified: '2026-07-20'
 tags:
 - Company
 - Notes
+- Knowledge-Management
+- Productivity
+- Artificial Intelligence
+- Note Taking
+- Search
+- MCP
+- Agents
+- Meetings
+tags_raw:
+- Company
+- Notes
 - Knowledge Management
 - Productivity
 - Artificial Intelligence
@@ -70,6 +81,8 @@ apis:
   humanURL: https://docs.mem.ai
   baseURL: https://api.mem.ai
   tags:
+  - External
+  tags_raw:
   - external
   properties:
   - type: OpenAPI
