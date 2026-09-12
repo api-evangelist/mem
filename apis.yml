@@ -120,6 +120,8 @@ x-enrichment:
   artifacts_added: 23
   pass: local-v1
 common:
+- type: Website
+  url: https://www.mem.ai/
 - type: DeveloperPortal
   url: https://docs.mem.ai
 - type: Documentation
