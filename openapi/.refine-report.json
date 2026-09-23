@@ -1,22 +1,27 @@
 {
   "provider": "mem",
   "sources": [
-    "mem-coreapi-service-info-api-openapi.yml",
-    "mem-external-api-openapi.yml",
-    "mem-external-v0-api-openapi.yml",
-    "mem-external-v1-api-openapi.yml",
-    "mem-external-v2-api-openapi.yml"
+    "_original/mem-openapi-original.json"
   ],
   "outputs": [
     "mem-coreapi-service-info-api-openapi.yml",
-    "mem-external-api-openapi.yml",
-    "mem-external-v0-api-openapi.yml",
-    "mem-external-v1-api-openapi.yml",
-    "mem-external-v2-api-openapi.yml"
+    "mem-external-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "mem-openapi-original.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "mem-openapi-original.json: declared missing tag: external",
+    "mem-openapi-original.json: declared missing tag: external-v0",
+    "mem-openapi-original.json: declared missing tag: external-v1",
+    "mem-openapi-original.json: declared missing tag: external-v2",
+    "mem-openapi-original.json: multi-axis tagging (5 tags, 2 first tags, 1.95x duplication over 64 operations) \u2014 split on first tag, 61 operations narrowed",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "mem-coreapi-service-info-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mem-external-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
