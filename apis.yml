@@ -47,7 +47,7 @@ modified: '2026-07-20'
 tags:
 - Company
 - Notes
-- Knowledge-Management
+- Knowledge Management
 - Productivity
 - Artificial Intelligence
 - Note Taking
@@ -66,6 +66,7 @@ tags_raw:
 - MCP
 - Agents
 - Meetings
+- Knowledge-Management
 apis:
 - aid: mem:mem-coreapi-service-info-api
   name: Mem CoreApi__service-info API
@@ -88,7 +89,7 @@ apis:
   - type: ChangeLog
     url: https://docs.mem.ai/api-reference/overview/changelog
 - aid: mem:mem-external-api
-  name: Mem external API
+  name: Mem External API
   description: The external API from Mem — 53 operation(s) for external.
   humanURL: https://docs.mem.ai
   baseURL: https://api.mem.ai
