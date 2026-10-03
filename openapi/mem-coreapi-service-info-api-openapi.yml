@@ -48,18 +48,29 @@ paths:
       - CoreApi__service-info
 components:
   schemas:
-    CoreApi__SupportedSettingsSchemaVersion:
+    CoreApi__SessionConfigVariant:
       enum:
-      - 1
-      title: SupportedSettingsSchemaVersion
-      type: integer
-    CoreApi__SupportedFeaturesSchema:
+      - STANDARD
+      - CLAUDE_SONNET_4_6
+      - GPT_5_2
+      - GPT_5_4
+      - GPT_5_6_TERRA
+      - CLAUDE_SONNET_5
+      - GEMINI_3_FLASH
+      - GEMINI_3_1_PRO
+      - GEMINI_3_5_FLASH
+      title: SessionConfigVariant
+      type: string
+    CoreApi__SupportedSettingsSchema:
       properties:
-        chat:
-          $ref: '#/components/schemas/CoreApi__SupportedChatSettingsSchema'
+        features:
+          $ref: '#/components/schemas/CoreApi__SupportedFeaturesSchema'
+        schema_version:
+          $ref: '#/components/schemas/CoreApi__SupportedSettingsSchemaVersion'
       required:
-      - chat
-      title: SupportedFeaturesSchema
+      - schema_version
+      - features
+      title: SupportedSettingsSchema
       type: object
     CoreApi__SupportedChatModelSchema:
       properties:
@@ -86,68 +97,18 @@ components:
       - is_selectable
       title: SupportedChatModelSchema
       type: object
-    CoreApi__ChromeExtensionServiceInfoSchema:
-      properties:
-        minimum_supported_version:
-          title: Minimum Supported Version
-          type: string
-      required:
-      - minimum_supported_version
-      title: ChromeExtensionServiceInfoSchema
-      type: object
-    CoreApi__SessionConfigVariant:
+    CoreApi__SupportedSettingsSchemaVersion:
       enum:
-      - STANDARD
-      - CLAUDE_SONNET_4_6
-      - GPT_5_2
-      - GPT_5_4
-      - GPT_5_6_TERRA
-      - CLAUDE_SONNET_5
-      - GEMINI_3_FLASH
-      - GEMINI_3_1_PRO
-      - GEMINI_3_5_FLASH
-      title: SessionConfigVariant
-      type: string
-    CoreApi__SupportedSettingsSchema:
+      - 1
+      title: SupportedSettingsSchemaVersion
+      type: integer
+    CoreApi__SupportedFeaturesSchema:
       properties:
-        features:
-          $ref: '#/components/schemas/CoreApi__SupportedFeaturesSchema'
-        schema_version:
-          $ref: '#/components/schemas/CoreApi__SupportedSettingsSchemaVersion'
+        chat:
+          $ref: '#/components/schemas/CoreApi__SupportedChatSettingsSchema'
       required:
-      - schema_version
-      - features
-      title: SupportedSettingsSchema
-      type: object
-    CoreApi__ServiceInfoResponseSchema:
-      properties:
-        chrome_extension:
-          $ref: '#/components/schemas/CoreApi__ChromeExtensionServiceInfoSchema'
-        supported_settings:
-          $ref: '#/components/schemas/CoreApi__SupportedSettingsSchema'
-      required:
-      - chrome_extension
-      - supported_settings
-      title: ServiceInfoResponseSchema
-      type: object
-    CoreApi__ApiErrorMetadata:
-      description: The ``error_metadata`` object nested inside every error envelope.
-      properties:
-        error_kind:
-          title: Error Kind
-          type: string
-        message:
-          title: Message
-          type: string
-        request_id:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Request Id
-      required:
-      - error_kind
-      - message
-      title: ApiErrorMetadata
+      - chat
+      title: SupportedFeaturesSchema
       type: object
     CoreApi__ApiError:
       description: The full error envelope emitted by every Mem API service.
@@ -170,6 +131,23 @@ components:
       - GOOGLEGEMINI
       title: SupportedChatModelProvider
       type: string
+    CoreApi__PlanId:
+      enum:
+      - free
+      - paid
+      title: PlanId
+      type: string
+    CoreApi__ServiceInfoResponseSchema:
+      properties:
+        chrome_extension:
+          $ref: '#/components/schemas/CoreApi__ChromeExtensionServiceInfoSchema'
+        supported_settings:
+          $ref: '#/components/schemas/CoreApi__SupportedSettingsSchema'
+      required:
+      - chrome_extension
+      - supported_settings
+      title: ServiceInfoResponseSchema
+      type: object
     CoreApi__SupportedChatSettingsSchema:
       properties:
         models:
@@ -181,12 +159,34 @@ components:
       - models
       title: SupportedChatSettingsSchema
       type: object
-    CoreApi__PlanId:
-      enum:
-      - free
-      - paid
-      title: PlanId
-      type: string
+    CoreApi__ChromeExtensionServiceInfoSchema:
+      properties:
+        minimum_supported_version:
+          title: Minimum Supported Version
+          type: string
+      required:
+      - minimum_supported_version
+      title: ChromeExtensionServiceInfoSchema
+      type: object
+    CoreApi__ApiErrorMetadata:
+      description: The ``error_metadata`` object nested inside every error envelope.
+      properties:
+        error_kind:
+          title: Error Kind
+          type: string
+        message:
+          title: Message
+          type: string
+        request_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Request Id
+      required:
+      - error_kind
+      - message
+      title: ApiErrorMetadata
+      type: object
   securitySchemes:
     bearerAuth:
       scheme: bearer
