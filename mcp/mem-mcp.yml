@@ -78,3 +78,20 @@ deployment:
   probe: gated
   checked: '2026-08-12'
   source: catalog MCP census
+rfc9728:
+  endpoint: https://mcp.mem.ai/mcp
+  metadata_url: https://mcp.mem.ai/.well-known/oauth-protected-resource
+  discovered_via: WWW-Authenticate resource_metadata on an anonymous POST initialize
+  fetched: '2026-09-25'
+  http_status: 200
+  content_type: application/json
+  document:
+    resource: https://mcp.mem.ai/mcp
+    authorization_servers:
+    - https://api.mem.ai
+    scopes_supported:
+    - content.read
+    - content.write
+    bearer_methods_supported:
+    - header
+    resource_name: Mem API
