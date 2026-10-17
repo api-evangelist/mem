@@ -48,29 +48,14 @@ paths:
       - CoreApi__service-info
 components:
   schemas:
-    CoreApi__SessionConfigVariant:
-      enum:
-      - STANDARD
-      - CLAUDE_SONNET_4_6
-      - GPT_5_2
-      - GPT_5_4
-      - GPT_5_6_TERRA
-      - CLAUDE_SONNET_5
-      - GEMINI_3_FLASH
-      - GEMINI_3_1_PRO
-      - GEMINI_3_5_FLASH
-      title: SessionConfigVariant
-      type: string
-    CoreApi__SupportedSettingsSchema:
+    CoreApi__ChromeExtensionServiceInfoSchema:
       properties:
-        features:
-          $ref: '#/components/schemas/CoreApi__SupportedFeaturesSchema'
-        schema_version:
-          $ref: '#/components/schemas/CoreApi__SupportedSettingsSchemaVersion'
+        minimum_supported_version:
+          title: Minimum Supported Version
+          type: string
       required:
-      - schema_version
-      - features
-      title: SupportedSettingsSchema
+      - minimum_supported_version
+      title: ChromeExtensionServiceInfoSchema
       type: object
     CoreApi__SupportedChatModelSchema:
       properties:
@@ -97,77 +82,6 @@ components:
       - is_selectable
       title: SupportedChatModelSchema
       type: object
-    CoreApi__SupportedSettingsSchemaVersion:
-      enum:
-      - 1
-      title: SupportedSettingsSchemaVersion
-      type: integer
-    CoreApi__SupportedFeaturesSchema:
-      properties:
-        chat:
-          $ref: '#/components/schemas/CoreApi__SupportedChatSettingsSchema'
-      required:
-      - chat
-      title: SupportedFeaturesSchema
-      type: object
-    CoreApi__ApiError:
-      description: The full error envelope emitted by every Mem API service.
-      properties:
-        error_category:
-          title: Error Category
-          type: string
-        error_metadata:
-          $ref: '#/components/schemas/CoreApi__ApiErrorMetadata'
-      required:
-      - error_category
-      - error_metadata
-      title: ApiError
-      type: object
-    CoreApi__SupportedChatModelProvider:
-      enum:
-      - STANDARD
-      - ANTHROPIC
-      - OPENAI
-      - GOOGLEGEMINI
-      title: SupportedChatModelProvider
-      type: string
-    CoreApi__PlanId:
-      enum:
-      - free
-      - paid
-      title: PlanId
-      type: string
-    CoreApi__ServiceInfoResponseSchema:
-      properties:
-        chrome_extension:
-          $ref: '#/components/schemas/CoreApi__ChromeExtensionServiceInfoSchema'
-        supported_settings:
-          $ref: '#/components/schemas/CoreApi__SupportedSettingsSchema'
-      required:
-      - chrome_extension
-      - supported_settings
-      title: ServiceInfoResponseSchema
-      type: object
-    CoreApi__SupportedChatSettingsSchema:
-      properties:
-        models:
-          items:
-            $ref: '#/components/schemas/CoreApi__SupportedChatModelSchema'
-          title: Models
-          type: array
-      required:
-      - models
-      title: SupportedChatSettingsSchema
-      type: object
-    CoreApi__ChromeExtensionServiceInfoSchema:
-      properties:
-        minimum_supported_version:
-          title: Minimum Supported Version
-          type: string
-      required:
-      - minimum_supported_version
-      title: ChromeExtensionServiceInfoSchema
-      type: object
     CoreApi__ApiErrorMetadata:
       description: The ``error_metadata`` object nested inside every error envelope.
       properties:
@@ -186,6 +100,92 @@ components:
       - error_kind
       - message
       title: ApiErrorMetadata
+      type: object
+    CoreApi__SupportedChatModelProvider:
+      enum:
+      - STANDARD
+      - ANTHROPIC
+      - OPENAI
+      - GOOGLEGEMINI
+      title: SupportedChatModelProvider
+      type: string
+    CoreApi__PlanId:
+      enum:
+      - free
+      - paid
+      title: PlanId
+      type: string
+    CoreApi__ApiError:
+      description: The full error envelope emitted by every Mem API service.
+      properties:
+        error_category:
+          title: Error Category
+          type: string
+        error_metadata:
+          $ref: '#/components/schemas/CoreApi__ApiErrorMetadata'
+      required:
+      - error_category
+      - error_metadata
+      title: ApiError
+      type: object
+    CoreApi__SupportedFeaturesSchema:
+      properties:
+        chat:
+          $ref: '#/components/schemas/CoreApi__SupportedChatSettingsSchema'
+      required:
+      - chat
+      title: SupportedFeaturesSchema
+      type: object
+    CoreApi__ServiceInfoResponseSchema:
+      properties:
+        chrome_extension:
+          $ref: '#/components/schemas/CoreApi__ChromeExtensionServiceInfoSchema'
+        supported_settings:
+          $ref: '#/components/schemas/CoreApi__SupportedSettingsSchema'
+      required:
+      - chrome_extension
+      - supported_settings
+      title: ServiceInfoResponseSchema
+      type: object
+    CoreApi__SessionConfigVariant:
+      enum:
+      - STANDARD
+      - CLAUDE_SONNET_4_6
+      - GPT_5_2
+      - GPT_5_4
+      - GPT_5_6_TERRA
+      - CLAUDE_SONNET_5
+      - GEMINI_3_FLASH
+      - GEMINI_3_1_PRO
+      - GEMINI_3_5_FLASH
+      title: SessionConfigVariant
+      type: string
+    CoreApi__SupportedSettingsSchemaVersion:
+      enum:
+      - 1
+      title: SupportedSettingsSchemaVersion
+      type: integer
+    CoreApi__SupportedSettingsSchema:
+      properties:
+        features:
+          $ref: '#/components/schemas/CoreApi__SupportedFeaturesSchema'
+        schema_version:
+          $ref: '#/components/schemas/CoreApi__SupportedSettingsSchemaVersion'
+      required:
+      - schema_version
+      - features
+      title: SupportedSettingsSchema
+      type: object
+    CoreApi__SupportedChatSettingsSchema:
+      properties:
+        models:
+          items:
+            $ref: '#/components/schemas/CoreApi__SupportedChatModelSchema'
+          title: Models
+          type: array
+      required:
+      - models
+      title: SupportedChatSettingsSchema
       type: object
   securitySchemes:
     bearerAuth:
