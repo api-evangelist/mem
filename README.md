@@ -64,6 +64,139 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Mem is a company surfaced as a portfolio company of a16z and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Mem is an AI-native note-taking and knowledge workspace that captures notes, meetings, and ideas and keeps them instantly searchable and discoverable. It pairs a Workspace (notes, collections, projects, calendar, meeting transcription) with an Agent that tracks priorities and surfaces timely reminders. Mem exposes a REST API (the Mem Public Client API at https://api.mem.ai) for creating, reading, searching, and organizing notes and collections, plus semantic search, attachments, audio recordings, calendar, sessions, and tasks. It also ships an official hosted Model Context Protocol (MCP) server so AI tools like Claude, ChatGPT, and CLI agents can work with a user's Mem knowledge natively over OAuth. Mem is backed by a16z.
 
-Backed by: a16z
+**Areas:** Company · Notes · Knowledge Management · Productivity · Artificial Intelligence · Note Taking · Search · MCP · Agents · Meetings
+
+## Mem on APIs.io
+
+Everything profiled for Mem is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/mem/](https://apis.io/providers/mem/)** — or go straight to one of the APIs or properties below.
+
+### APIs (2)
+
+- [Mem CoreApi__service-info API](https://apis.io/apis/mem/mem-coreapi-service-info-api/) — The CoreApi__service-info API from Mem — 1 operation(s) for coreapi__service-info.
+- [Mem External API](https://apis.io/apis/mem/mem-external-api/) — The external API from Mem — 53 operation(s) for external.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [Mem MCP](https://apis.io/servers/mem/mem-mcp/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Mem Agentic Access](https://apis.io/agentic-access/mem/mem-agentic-access/)
+
+#### Collections (5)
+
+Postman and Open Collection request collections.
+
+- [Mem Public Client CoreApi__service-info API](https://apis.io/collections/mem/open-mem-coreapi-service-info-api/)
+- [Mem Public Client CoreApi__service-info external API](https://apis.io/collections/mem/open-mem-external-api/)
+- [Mem Public Client CoreApi__service-info external-v0 API](https://apis.io/collections/mem/open-mem-external-v0-api/)
+- [Mem Public Client CoreApi__service-info external-v1 API](https://apis.io/collections/mem/open-mem-external-v1-api/)
+- [Mem Public Client CoreApi__service-info external-v2 API](https://apis.io/collections/mem/open-mem-external-v2-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Mem Openapi Overlay](https://apis.io/overlays/mem/mem-openapi-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Mem Authentication](https://apis.io/security/mem/mem-authentication/)
+- [Mem Domain Security](https://apis.io/security/mem/mem-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Mem Scopes](https://apis.io/scopes/mem/mem-scopes/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Mem Rate Limits](https://apis.io/rate-limits/mem/mem-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.mem.ai/)
+- [Documentation](https://docs.mem.ai)
+- [Getting started](https://docs.mem.ai/guides/get-started/quickstart)
+- [API reference](https://docs.mem.ai/api-reference/overview/introduction)
+- [Pricing](https://mem.ai/pricing)
+- [Sign up](https://mem.ai/login)
+- [Support](https://help.mem.ai)
+- [Blog](https://get.mem.ai/blog)
+- [Security](https://mem.ai/pages/security)
+- [Trust centre](https://trust.mem.ai/)
+- [Terms of service](https://mem.ai/pages/terms-of-service)
+- [Privacy policy](https://mem.ai/pages/privacy)
+- [GitHub](https://github.com/mem-ai)
+
+## API Evangelist rating
+
+**Kin Score 42.5** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 44.1 |
+| Contract governance | 4.5 |
+| Operational transparency | 50.0 |
+| Developer ergonomics | 58.9 |
+| Access clarity | 7.9 |
+
+**Agent readiness 59.6** — agent-native
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | documented (partial credit) |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | verified |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | — |
+
+**Regulatory alignment 29.1** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/mem/](https://apis.io/providers/mem/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Mem: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/mem/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
